@@ -1,0 +1,228 @@
+@font-face {
+  font-family: 'inherit';
+  src: url(../font/Inheritance.ttf);
+}
+body,html{
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+  
+}
+body a,body a:hover{
+  text-decoration: none;
+}
+
+.homepage::before{
+  content: "";
+  background-color: rgb(0, 0, 0,0.9);
+  
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.homepage{
+  background-image: url(../img/nice_city.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+body .logo {
+  font-family: "inherit",sans-serif !important;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #b00020;
+ 
+  display: flex;
+  align-items: center;
+}
+.logo:hover{
+  color: #b00020;
+}
+.header__content .header__item{
+  margin: auto;
+}
+.header__item1 input{
+  background: #fff url(../img/search.png) no-repeat 10px center;
+      border: 1px solid #eee;
+      padding: 0 10px;
+      width: 35px;
+      height: 35px;
+      border-radius: 10em;
+      cursor: pointer;
+      transition: 0.5s;
+      outline: none;
+}
+.header__item1 input:focus{
+  width: 200px;
+      padding-left: 32px;
+      color: #000;
+      padding-right: 15px;
+      cursor: auto;
+      background-color: #fff;
+}
+.header__item1 a img{
+  width: 35px;
+  height: 35px;
+}
+
+
+body #navbar-default ul li .active{
+  background-color: rgba(220, 38, 38)  ;
+  border-radius: 30px ;
+}
+body #navbar-default ul li:last-of-type a{
+ 
+  
+  background-image: linear-gradient(
+    to right,
+    #f55f8d 0,
+    #f8ae56 51%,
+    #f55f8d 100%
+  );
+  background-size: 200%;
+  
+  border-radius: 30px;
+ 
+  transition: 0.5s;
+}
+body #navbar-default ul li:last-of-type a:hover{
+  background-position: right center;
+}
+.fixed-top { 
+  
+  background-color: rgb(0, 0, 0,0.6);
+}
+
+
+
+.ant-carousel .slick-dots.slick-dots-bottom li button{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.movie__text{
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.img-max-height{
+  height: 80vh ;
+}
+
+.title .title__datve{
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.title .title__datve:hover{
+  color: #fff;
+  text-decoration: none;
+}
+.movie__item{
+  position: relative;
+  overflow: hidden;
+}
+.title{
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0,0.5);
+  
+  transition: all 0.5s ease-in-out;
+}
+.movie__item:hover .title{
+  left: 0;
+   transition: all 0.5s ease-in-out;
+  
+}
+.title__datve:first-of-type{
+    background-color: rgb(242 107 56);
+}
+.title__datve:last-of-type{
+  border: 1px solid #fff;
+  padding: 5px 12.5px;
+}
+.movie__item img,.endow__item img{
+  height: 400px;
+  border-radius: 15px;
+}
+.endow__item img{
+  height: 300px;
+  
+}
+ul li{
+  list-style: none;
+  text-align: center;
+}
+.footer__icon li{
+  display: inline;
+  
+}
+.footer__icon{
+  text-align: center;
+}
+.footer__icon i{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 30px;
+  margin: 10px 5px 0;
+}
+.footer__icon li:nth-child(1) i{
+  background-color: #0866FF;
+}
+.footer__icon li:nth-child(2) i{
+  background-color: #0693e3;
+}
+.footer__icon li:nth-child(3) i{
+  background-color: #E1306C;
+}
+ul li a{
+  color: #fff;
+  font-size: 25px;
+  
+}
+.footer__end{
+  background-color: #000;
+}
+.footer__end ul li {
+  display: inline;
+  font-size: 14px;
+}
+.footer__end ul {
+  display: inline-block;
+}
+.footer__end p,.footer__end li span,.footer__end li i{
+  font-size: 14px;
+  transition: all .5s ease-in-out;
+}
+.footer__hover a{
+  transition: all .5s ease-in-out;
+}
+.footer__end li span:hover ,.footer__hover a:hover{
+  color: rgb(242 107 56);
+}
+
+@media (min-width:1200px) {
+  body .container{
+      max-width: 1200px !important;
+  }
+}
+
+@media (max-width:992px){
+  header .navbar-toggler span{
+    color: #b00020;
+    font-size: 2rem;
+  }
+}
