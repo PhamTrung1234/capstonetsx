@@ -1,8 +1,11 @@
 import { useRoutes } from "react-router-dom";
-import HomeTemplates from "../component/HomeTemplate";
-import HomePages from "../component/HomeTemplate/HomePages";
-import ListMovie from "../component/HomeTemplate/ListMovie";
-import Signin from "../layouts/Signin";
+import HomeTemplates from "../layouts/HomeTemplate";
+import HomePages from "../modules/HomePages";
+import ListMovie from "../modules/ListMovie";
+import Signin from "../modules/AuthenPage/Signin";
+import Signup from "../modules/AuthenPage/Signup";
+import AuthLayout from "../layouts/AuthenLayout";
+
 
 export const userRouteLayout = ()=>{
     return useRoutes([
@@ -10,6 +13,11 @@ export const userRouteLayout = ()=>{
             {path:"",element:<HomePages/>},
             {path:"/phim",element:<ListMovie/>}
         ]},
-        {path:"/signin",element:<Signin/>}
+        {path:"/auth",element:<AuthLayout/>,children:[
+            {path:"/auth/signin",element:<Signin/>},
+            {path:"/auth/signup",element:<Signup/>}
+        ]}
+       
+        
     ])
 }

@@ -1,7 +1,7 @@
 import { Spin } from "antd";
-import { dataListMovie } from "../../../apis/CallApiListMovie"
-import { CurrentMovie } from "../../../types/types";
-import { rendertitle } from "../../../root";
+import { dataListMovie } from "../../apis/CallApiListMovie"
+import { CurrentMovie } from "../../types/types";
+import { rendertitle } from "../../root";
 export default function ListMovie() {
   const {isLoading,data,error} = dataListMovie();
   const renderMovie=()=>{

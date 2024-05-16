@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Headers from "../../layouts/Headers";
+import Headers from "../../component/Headers";
 import { useEffect } from "react";
-import Footer from "../../layouts/Footer";
-import FooterEnd from "../../layouts/FooterEnd";
+import Footer from "../../component/Footer";
+import FooterEnd from "../../component/FooterEnd";
 
 
 export default function HomeTemplates() {

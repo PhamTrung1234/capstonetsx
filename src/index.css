@@ -213,6 +213,15 @@ ul li a{
 .footer__end li span:hover ,.footer__hover a:hover{
   color: rgb(242 107 56);
 }
+.signin{
+  margin: auto ;
+  background-image: url("https://p.w3layouts.com/demos_new/template_demo/23-03-2018/movie_seat_selection-demo_Free/759053290/web/images/banner.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
 
 @media (min-width:1200px) {
   body .container{

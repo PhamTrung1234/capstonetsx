@@ -1,6 +1,6 @@
 import { Carousel } from "antd";
 import { useQuery } from "@tanstack/react-query";
-import { getBannerMovieApi } from "../../apis/CallApiBanner";
+import { getBannerMovieApi } from "../../../apis/CallApiBanner";
 
 
 export default function HomeCarousel() {
