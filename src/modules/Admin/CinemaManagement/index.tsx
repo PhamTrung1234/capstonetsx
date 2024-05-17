@@ -48,7 +48,7 @@ export default function CinemaManagement() {
       }
       return addUserApi(formValues);
     },
-    onSuccess:(data)=>{
+    onSuccess:()=>{
       setIsOpenModal(false);
       queryClient.refetchQueries({
         queryKey: ["list-user", { currentPage }],
@@ -62,7 +62,7 @@ export default function CinemaManagement() {
         return DeleteUserApi(formValues);
       
     },
-    onSuccess:(data)=>{
+    onSuccess:()=>{
       console.log("xóa thành công");
       queryClient.refetchQueries({
         queryKey: ["list-user", { currentPage }],
