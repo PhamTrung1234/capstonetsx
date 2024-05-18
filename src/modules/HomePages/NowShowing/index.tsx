@@ -34,7 +34,7 @@ export default function NowShowing() {
                   src={item.hinhAnh}
                   alt="..."
                 ></img>
-                {rendertitle(item.trailer,"/phim")}
+                {rendertitle(item.trailer,`/phim/${item.maPhim}`)}
               </div>
               <p className="movie__text text-lg mt-4 font-medium">{item.tenPhim}</p>
             </div>

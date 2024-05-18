@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import HomeTemplates from "../layouts/HomeTemplate";
 import HomePages from "../modules/HomePages";
-import ListMovie from "../modules/ListMovie";
+import ListMovie from "../modules/ListMovie/_ListMovie";
 import Signin from "../modules/AuthenPage/Signin";
 import Signup from "../modules/AuthenPage/Signup";
 import AuthLayout from "../layouts/AuthenLayout";
@@ -10,6 +10,8 @@ import AccountSettings from "../modules/Admin/AccountSettings";
 import CinemaManagement from "../modules/Admin/CinemaManagement";
 import MovieManagement from "../modules/Admin/MovieManagement";
 import UserManagement from "../modules/Admin/UserManagement";
+import DetailMovie from "../modules/ListMovie/DetailMovie";
+import ListMoviePages from "../modules/ListMovie";
 
 
 
@@ -25,7 +27,10 @@ export const useRouteElement = () => {
           },
           {
             path: "/phim",
-            element: <ListMovie />,
+            element: <ListMoviePages />,children:[
+                {path:"",element:<ListMovie/>},
+                {path:"/phim/:id",element:<DetailMovie/>}
+            ]
           },
         ],
       },

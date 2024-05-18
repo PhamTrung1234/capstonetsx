@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../store"
+import { useAppSelector } from "../../../store/hook"
 
 
 export default function Content() {
-    const data = useSelector((state:RootState)=>state.endow.thongTinUuDai)
+    const data = useAppSelector(state=>state.endow.thongTinUuDai)
+    
     const renderendow = ()=>{
         return data?.map((item,index)=>{
             return(
