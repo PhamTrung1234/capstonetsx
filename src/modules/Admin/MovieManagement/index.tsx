@@ -27,8 +27,9 @@ import {
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addMovieApi, getListMovieApi } from "../../../apis/CallApiAdmin/movie";
+import { DeleteMovieApi, UpdateMovieApi, addMovieApi, getListMovieApi } from "../../../apis/CallApiAdmin/movie";
 import { PAGE_SIZE } from "../../../constants";
+import moment from "moment";
 
 export default function MovieManagement() {
   const { handleSubmit, control, watch, setValue, reset } = useForm({
@@ -36,12 +37,13 @@ export default function MovieManagement() {
       tenPhim: "",
       trailer: "",
       moTa: "",
-      maNhom: "GP01",
+      maNhom: "GP03",
       ngayKhoiChieu: "",
       trangThaiChieu: true,
       hot: true,
       danhGia: "",
       hinhAnh: undefined,
+      maPhim: 0,
     },
   });
 
@@ -55,9 +57,12 @@ export default function MovieManagement() {
   });
 
   const queryClient = useQueryClient();
-
+  const [isupDate,setIsUpdate]=useState(false);
   const { mutate: handleAddMovie, isPending } = useMutation({
     mutationFn: (formValues: FormData) => {
+      if(isupDate){
+        return UpdateMovieApi(formValues);
+      }
       return addMovieApi(formValues);
     },
     onSuccess: (data) => {
@@ -71,7 +76,20 @@ export default function MovieManagement() {
     },
     onError: (error) => {},
   });
-
+  const {mutate: handledeleteMovie}=useMutation({
+    mutationFn:(formValues:number)=>{
+        return DeleteMovieApi(formValues);
+      
+    },
+    onSuccess:(data)=>{
+      console.log("xóa thành công");
+      queryClient.refetchQueries({
+        queryKey: ["list-movie", { currentPage }],
+        type: "active",
+      });
+    },
+    onError:(error)=>console.log(error)
+  });
   const columns = [
     {
       title: "Tên Phim",
@@ -104,11 +122,14 @@ export default function MovieManagement() {
       title: "Ngày khởi chiếu",
       dataIndex: "ngayKhoiChieu",
       width: 140,
+      render: (textDanhGia: string) => (
+        <Typography className="w-[120px]">{textDanhGia}</Typography>
+      ),
     },
     {
       title: "Đánh giá",
       dataIndex: "danhGia",
-      render: (textDanhGia: string) => (
+      render: (textDanhGia: number) => (
         <Typography className="w-[120px]">{textDanhGia}</Typography>
       ),
     },
@@ -170,7 +191,9 @@ export default function MovieManagement() {
               setValue("trangThaiChieu", record.dangChieu);
               setValue("hinhAnh", record.hinhAnh);
               setValue("danhGia", record.danhGia);
+              setValue("maPhim",record.maPhim)
               setDataEdit(record);
+              setIsUpdate(true);
             }}
           >
             Cập nhật
@@ -181,7 +204,8 @@ export default function MovieManagement() {
   ];
 
   const handleDelete = (record: any) => {
-    console.log("record", record);
+    handledeleteMovie(record.maPhim)
+    // console.log("maphim",record.maPhim);
   };
 
   const hinhAnhValue = watch("hinhAnh");
@@ -192,6 +216,7 @@ export default function MovieManagement() {
 
   const onSubmit = (formValues: any) => {
     const formData = new FormData();
+    formData.append("maPhim", formValues.maPhim);
     formData.append("tenPhim", formValues.tenPhim);
     formData.append("trailer", formValues.trailer);
     formData.append("danhGia", formValues.danhGia);
@@ -201,7 +226,7 @@ export default function MovieManagement() {
     formData.append("dangChieu", formValues.trangThaiChieu ? "true" : "false");
     formData.append("sapChieu", formValues.trangThaiChieu ? "false" : "true");
     formData.append("ngayKhoiChieu", formValues.ngayKhoiChieu);
-    formData.append("maNhom", "GP01");
+    formData.append("maNhom", "GP03");
     handleAddMovie(formData);
   };
 
@@ -228,6 +253,7 @@ export default function MovieManagement() {
           onClick={() => {
             setIsOpenModal(true);
             reset();
+            setIsUpdate(false);
           }}
         >
           Thêm
@@ -256,7 +282,7 @@ export default function MovieManagement() {
         </div>
       </div>
       <Modal
-        title="Thêm phim"
+        title={isupDate? "Cập nhật phim" : "Thêm phim"}
         centered
         open={isOpenModal}
         onCancel={() => setIsOpenModal(false)}
@@ -352,7 +378,7 @@ export default function MovieManagement() {
               <Controller
                 name="danhGia"
                 control={control}
-                render={() => {
+                render={({field}) => {
                   return (
                     <Input
                       size="large"
@@ -360,6 +386,7 @@ export default function MovieManagement() {
                       max={10}
                       className="mt-1"
                       placeholder="0 - 10"
+                      {...field}
                     />
                   );
                 }}
@@ -379,6 +406,7 @@ export default function MovieManagement() {
                       size="large"
                       placeholder="Chọn ngày"
                       format={"DD/MM/YYYY"}
+                      
                     />
                   );
                 }}
@@ -431,7 +459,7 @@ export default function MovieManagement() {
                 size="large"
                 type="primary"
               >
-                Thêm phim
+                {isupDate? "Update":"Add new"}
               </Button>
             </Col>
           </Row>

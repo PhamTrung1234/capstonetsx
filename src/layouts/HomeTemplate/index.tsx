@@ -8,7 +8,7 @@ import FooterEnd from "../../component/FooterEnd";
 export default function HomeTemplates() {
     useEffect(()=>{
             window.addEventListener('scroll', function() {
-            let navbar = document.querySelector('header');
+            const navbar = document.querySelector('header');
             if (window.scrollY > 0) { 
                 navbar?.classList.add('fixed-top');
             } else {

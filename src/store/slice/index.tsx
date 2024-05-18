@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { json } from "react-router-dom";
 
 const initialState  = {
   thongTinUuDai: [
@@ -19,11 +20,12 @@ const initialState  = {
   ],
   movieDettail: null,
 };
+
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setCurrentUser: (state, { payload }) => {
+    setdiscount: (state, { payload }) => {
       state.thongTinUuDai = payload;
       
     },
@@ -32,5 +34,5 @@ const userSlice = createSlice({
     }
   },
 });
-export const { setCurrentUser,setMovieDetail } = userSlice.actions;
+export const { setdiscount,setMovieDetail } = userSlice.actions;
 export default userSlice;

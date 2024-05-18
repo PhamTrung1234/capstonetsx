@@ -49,3 +49,9 @@ export enum MaLoaiNguoiDung {
   KhachHang = "KhachHang",
   QuanTri = "QuanTri",
 }
+export interface Cinema {
+  maHeThongRap:  string;
+  tenHeThongRap: string;
+  biDanh:        string;
+  logo:          string;
+}

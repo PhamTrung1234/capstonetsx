@@ -9,8 +9,16 @@ const navbar: NavBar2[] = [
   { to: "/phim", element: "Phim" },
   { to: "/rap", element: "Rạp Chiếu" },
   { to: "/thanhvien", element: "Thành Viên" },
-  { to:"/signin",element:"Sign in"}
 ];
+const userLoggedIn = localStorage.getItem("user");
+
+// If user is logged in, change "Sign in" to "Log out" in the navbar
+if (userLoggedIn) {
+  navbar.push({ to: "/", element: "Log out" });
+  
+} else {
+  navbar.push({ to: "/auth/signin", element: "Sign in" });
+}
 
 export const rendernavbar = () => {
   return navbar.map((item) => {
