@@ -4,7 +4,7 @@ import { RootState } from "../../../store"
 
 export default function Content() {
     const data = useSelector((state:RootState)=>state.endow.thongTinUuDai)
-    console.log(data)
+    
     const renderendow = ()=>{
         return data?.map((item,index)=>{
             return(

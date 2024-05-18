@@ -222,7 +222,9 @@ ul li a{
   display: flex;
   align-items: center;
 }
-
+.listmovie__img{
+  height: 500px;
+}
 @media (min-width:1200px) {
   body .container{
       max-width: 1200px !important;

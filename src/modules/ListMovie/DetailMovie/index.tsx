@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getDetailMovie } from "../../../apis/CallApiDetaiMovie";
+import { getDetailMovie,getDetaiTheater } from "../../../apis/CallApiDetaiMovie";
 import dayjs from "dayjs";
 
 import {  Spin } from "antd";
 import Showtimes from "./LichChieu";
+import { useAppDispatch } from "../../../store/hook";
+import { setMovieDetail } from "../../../store/slice";
 
 export default function DetailMovie() {
   const { id } = useParams();
@@ -14,23 +16,32 @@ export default function DetailMovie() {
       return getDetailMovie(id);
     },
   });
-
+  const theater  = useQuery({
+    queryKey: ["detail-theater"],
+    queryFn: () => {
+      return getDetaiTheater(id);
+    },
+  });
   
-
+  const dispatch = useAppDispatch();
+  dispatch(setMovieDetail(theater.data?.data))
+  
   
 
   const detailMovie = data?.data.content;
+  const duration = theater.data?.data.content.heThongRapChieu[0]?.cumRapChieu[0].lichChieuPhim[0].thoiLuong
+  ;
   
   const date = dayjs(detailMovie?.ngayKhoiChieu).format("DD-MM-YYYY");
   
-  if (isPending || error) return <Spin />;
+  if (isPending || error || theater.isPending || theater.error) return <Spin />;
   return (
     <div className="relative container detai__movie">
       <div className="row ">
-        <div className="col-md-4">
-          <img src={detailMovie?.hinhAnh} alt="..." />
+        <div className="col-md-4 ">
+          <img className="rounded-xl listmovie__img"  src={detailMovie?.hinhAnh} alt="..." />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8 ">
           <p className="text-white text-2xl uppercase mb-5">
             <span className="font-bold mr-3">Tên Phim: </span>
             {detailMovie?.tenPhim}
@@ -50,11 +61,18 @@ export default function DetailMovie() {
             <span className="font-bold uppercase">Quốc gia :  </span>
             Âu- Mỹ
           </p>
-          <p className="text-white text-2xl">
+          <p className="text-white text-2xl mb-5">
             <span className="font-bold uppercase mr-3">
                 thể loại :  
             </span>
             Hành động
+          </p>
+          <p className="text-white text-2xl">
+            <span className="font-bold uppercase mr-3">
+              thời lượng : 
+            </span>
+            <span>{duration ? duration: "120"}</span>
+            <span>p</span>
           </p>
         </div>
       </div>

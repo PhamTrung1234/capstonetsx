@@ -17,6 +17,7 @@ const initialState  = {
       ,noiDung:"bắp ngăn đôi gấp đôi hạnh phúc"
     }
   ],
+  movieDettail: null,
 };
 const userSlice = createSlice({
   name: "user",
@@ -24,8 +25,12 @@ const userSlice = createSlice({
   reducers: {
     setCurrentUser: (state, { payload }) => {
       state.thongTinUuDai = payload;
+      
     },
+    setMovieDetail:(state,{payload})=>{
+      state.movieDettail = payload;
+    }
   },
 });
-export const { setCurrentUser } = userSlice.actions;
+export const { setCurrentUser,setMovieDetail } = userSlice.actions;
 export default userSlice;

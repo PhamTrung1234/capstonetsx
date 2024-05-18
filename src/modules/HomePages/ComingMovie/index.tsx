@@ -28,7 +28,7 @@ export default function ComingMovie() {
                 src={item.hinhAnh}
                 alt="..."
               ></img>
-              {rendertitle(item.trailer,"/phim")}
+              {rendertitle(item.trailer,`/phim/${item.maPhim}`)}
             </div>
             <p className="movie__text mt-4 text-lg font-medium">{item.tenPhim}</p>
           </div>
