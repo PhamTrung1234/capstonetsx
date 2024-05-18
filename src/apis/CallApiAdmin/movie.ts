@@ -1,4 +1,4 @@
-import { Banner, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
+import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
 import { ResponseApi } from "../../types/types";
 import api from "../apiUtil";
 import { PAGE_SIZE } from "../../constants";
@@ -70,3 +70,31 @@ export const DeleteUserApi = async (TaiKhoan:string) => {
   }
 };
 
+export const getCinemaMovieApi = async () => {
+  try {
+    const response = await api.get<ResponseApi<Cinema[]>>(
+      "/QuanLyRap/LayThongTinHeThongRap"
+    );
+    return response.data.content;
+  } catch (error: any) {
+    throw Error(error);
+  }
+};
+
+export const UpdateMovieApi = async (payload:FormData) => {
+  try {
+    const response = await api.post("/QuanLyPhim/CapNhatPhimUpload", payload);
+    return response.data.content;
+  } catch (error) {
+    throw "Lỗi rồi";
+  }
+};
+export const DeleteMovieApi = async (TaiKhoan:string) => {
+  try {
+    const response = await api.delete(`/QuanLyPhim/XoaPhim?MaPhim=${TaiKhoan}`);
+
+    return response.data.content;
+  } catch (error) {
+    throw "Lỗi rồi";
+  }
+};

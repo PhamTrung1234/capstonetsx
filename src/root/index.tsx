@@ -9,7 +9,7 @@ const navbar: NavBar2[] = [
   { to: "/phim", element: "Phim" },
   { to: "/rap", element: "Rạp Chiếu" },
   { to: "/thanhvien", element: "Thành Viên" },
-  { to:"/signin",element:"Sign in"}
+  { to:"/auth/signin",element:"Sign in"}
 ];
 
 export const rendernavbar = () => {
