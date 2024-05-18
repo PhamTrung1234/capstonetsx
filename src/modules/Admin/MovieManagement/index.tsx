@@ -37,7 +37,7 @@ export default function MovieManagement() {
       tenPhim: "",
       trailer: "",
       moTa: "",
-      maNhom: "GP01",
+      maNhom: "GP03",
       ngayKhoiChieu: "",
       trangThaiChieu: true,
       hot: true,
@@ -226,7 +226,7 @@ export default function MovieManagement() {
     formData.append("dangChieu", formValues.trangThaiChieu ? "true" : "false");
     formData.append("sapChieu", formValues.trangThaiChieu ? "false" : "true");
     formData.append("ngayKhoiChieu", formValues.ngayKhoiChieu);
-    formData.append("maNhom", "GP01");
+    formData.append("maNhom", "GP03");
     handleAddMovie(formData);
   };
 

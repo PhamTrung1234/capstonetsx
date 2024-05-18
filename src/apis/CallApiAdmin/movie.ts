@@ -27,7 +27,7 @@ export const addMovieApi = async (payload: FormData) => {
 export const getListMovieApi = async (currentPage: number) => {
   try {
     const response = await api.get<ResponseApi<DataMovieListPagination>>(
-      `/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP01&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
+      `/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP03&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
     );
     return response.data.content;
   } catch (error: any) {
@@ -38,7 +38,7 @@ export const getListMovieApi = async (currentPage: number) => {
 export const getUserList = async (currentPage: number) => {
   try {
     const response = await api.get<ResponseApi<DataUserPagination>>(
-      `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP01&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
+      `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP03&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
     );
     return response.data.content;
   } catch (error: any) {

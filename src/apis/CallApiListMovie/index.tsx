@@ -5,7 +5,7 @@ import api from "../apiUtil";
 
 export const CallListMovie = async()=>{
     try{
-        return await api.get("QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+        return await api.get("QuanLyPhim/LayDanhSachPhim?maNhom=GP03");
     }catch(error:any){
         throw Error(error);
     }
