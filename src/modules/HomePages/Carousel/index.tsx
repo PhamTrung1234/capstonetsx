@@ -27,7 +27,7 @@ export default function HomeCarousel() {
   
   return (
     <div >
-      <Carousel autoplay arrows >
+      <Carousel autoplay  >
         {rendercarousel()}
       </Carousel>
     </div>
