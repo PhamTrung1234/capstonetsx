@@ -1,6 +1,6 @@
 import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
 import { ResponseApi } from "../../types/types";
-import api from "../apiUtil";
+import api from "../../apis/CallApiAdmin/apiUtil";
 import { PAGE_SIZE } from "../../constants";
 
 export const getBannerMovieApi = async () => {
@@ -89,9 +89,9 @@ export const UpdateMovieApi = async (payload:FormData) => {
     throw "Lỗi rồi";
   }
 };
-export const DeleteMovieApi = async (TaiKhoan:string) => {
+export const DeleteMovieApi = async (MaPhim:number) => {
   try {
-    const response = await api.delete(`/QuanLyPhim/XoaPhim?MaPhim=${TaiKhoan}`);
+    const response = await api.delete(`/QuanLyPhim/XP?MaPhim=${MaPhim}`);
 
     return response.data.content;
   } catch (error) {

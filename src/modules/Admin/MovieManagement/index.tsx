@@ -43,6 +43,7 @@ export default function MovieManagement() {
       hot: true,
       danhGia: "",
       hinhAnh: undefined,
+      maPhim: 0,
     },
   });
 
@@ -76,7 +77,7 @@ export default function MovieManagement() {
     onError: (error) => {},
   });
   const {mutate: handledeleteMovie}=useMutation({
-    mutationFn:(formValues:string)=>{
+    mutationFn:(formValues:number)=>{
         return DeleteMovieApi(formValues);
       
     },
@@ -190,7 +191,7 @@ export default function MovieManagement() {
               setValue("trangThaiChieu", record.dangChieu);
               setValue("hinhAnh", record.hinhAnh);
               setValue("danhGia", record.danhGia);
-              
+              setValue("maPhim",record.maPhim)
               setDataEdit(record);
               setIsUpdate(true);
             }}
@@ -204,6 +205,7 @@ export default function MovieManagement() {
 
   const handleDelete = (record: any) => {
     handledeleteMovie(record.maPhim)
+    // console.log("maphim",record.maPhim);
   };
 
   const hinhAnhValue = watch("hinhAnh");
@@ -214,6 +216,7 @@ export default function MovieManagement() {
 
   const onSubmit = (formValues: any) => {
     const formData = new FormData();
+    formData.append("maPhim", formValues.maPhim);
     formData.append("tenPhim", formValues.tenPhim);
     formData.append("trailer", formValues.trailer);
     formData.append("danhGia", formValues.danhGia);
@@ -396,14 +399,14 @@ export default function MovieManagement() {
               <Controller
                 name="ngayKhoiChieu"
                 control={control}
-                render={({field}) => {
+                render={() => {
                   return (
                     <DatePicker
                       className="mt-1 w-full"
                       size="large"
                       placeholder="Chọn ngày"
                       format={"DD/MM/YYYY"}
-                      {...field}
+                      
                     />
                   );
                 }}
