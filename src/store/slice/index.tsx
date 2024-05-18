@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { json } from "react-router-dom";
 
 const initialState  = {
   thongTinUuDai: [
@@ -17,15 +18,21 @@ const initialState  = {
       ,noiDung:"bắp ngăn đôi gấp đôi hạnh phúc"
     }
   ],
+  currentUser: {} || localStorage.getItem("user")
 };
+
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setCurrentUser: (state, { payload }) => {
+    setdiscount: (state, { payload }) => {
       state.thongTinUuDai = payload;
+      state.currentUser = payload;
     },
+   
   },
 });
-export const { setCurrentUser } = userSlice.actions;
+
+
+export const { setdiscount } = userSlice.actions;
 export default userSlice;

@@ -2,6 +2,7 @@ import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../.
 import { ResponseApi } from "../../types/types";
 import api from "../../apis/CallApiAdmin/apiUtil";
 import { PAGE_SIZE } from "../../constants";
+import api1 from "../apiUtil";
 
 export const getBannerMovieApi = async () => {
   try {
@@ -96,5 +97,17 @@ export const DeleteMovieApi = async (MaPhim:number) => {
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
+  }
+};
+export const getUserLogin = async (user:{taiKhoan:"",matKhau:""}) => {
+  try {
+    const response = await api1.post(
+      "/QuanLyNguoiDung/DangNhap",user
+    );
+   
+    return response.data.content;
+  } 
+  catch (error: any) {
+  throw "Lỗi rồi";
   }
 };
