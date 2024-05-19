@@ -29,7 +29,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { DeleteMovieApi, UpdateMovieApi, addMovieApi, getListMovieApi } from "../../../apis/CallApiAdmin/movie";
 import { PAGE_SIZE } from "../../../constants";
-import moment from "moment";
+import dayjs from "dayjs";
 
 export default function MovieManagement() {
   const { handleSubmit, control, watch, setValue, reset } = useForm({
@@ -48,7 +48,7 @@ export default function MovieManagement() {
   });
 
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [dataEdit, setDataEdit] = useState(undefined);
+  const [dataEdit, setDataEdit] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading, error } = useQuery({
@@ -61,6 +61,7 @@ export default function MovieManagement() {
   const { mutate: handleAddMovie, isPending } = useMutation({
     mutationFn: (formValues: FormData) => {
       if(isupDate){
+        
         return UpdateMovieApi(formValues);
       }
       return addMovieApi(formValues);
@@ -123,14 +124,15 @@ export default function MovieManagement() {
       dataIndex: "ngayKhoiChieu",
       width: 140,
       render: (textDanhGia: string) => (
-        <Typography className="w-[120px]">{textDanhGia}</Typography>
+        
+        <Typography className="w-[120px] text-center">{dayjs(textDanhGia).format("DD/MM/YYYY")}</Typography>
       ),
     },
     {
       title: "Đánh giá",
       dataIndex: "danhGia",
       render: (textDanhGia: number) => (
-        <Typography className="w-[120px]">{textDanhGia}</Typography>
+        <Typography className="w-[120px] pl-6">{textDanhGia}</Typography>
       ),
     },
     {
@@ -192,7 +194,10 @@ export default function MovieManagement() {
               setValue("hinhAnh", record.hinhAnh);
               setValue("danhGia", record.danhGia);
               setValue("maPhim",record.maPhim)
-              setDataEdit(record);
+             
+              const formattedDate = record.ngayKhoiChieu ? dayjs(record.ngayKhoiChieu).format("DD/MM/YYYY") : watch("ngayKhoiChieu");
+              setDataEdit(formattedDate);
+              setValue("ngayKhoiChieu", formattedDate);
               setIsUpdate(true);
             }}
           >
@@ -232,7 +237,7 @@ export default function MovieManagement() {
 
   const dataSource = data?.items || [];
   const totalCount = data?.totalCount || 0;
-
+  
   return (
     <>
       <div className="flex items-center justify-between">
@@ -399,13 +404,16 @@ export default function MovieManagement() {
               <Controller
                 name="ngayKhoiChieu"
                 control={control}
-                render={() => {
+                render={({field}) => {
                   return (
                     <DatePicker
                       className="mt-1 w-full"
                       size="large"
                       placeholder="Chọn ngày"
+                      
                       format={"DD/MM/YYYY"}
+                      value={field.value ? dayjs(field.value, "DD/MM/YYYY") : null}
+                    onChange={(date, dateString) => field.onChange(dateString)}
                       
                     />
                   );
