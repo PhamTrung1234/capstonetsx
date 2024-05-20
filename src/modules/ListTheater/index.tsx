@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { dataTheater } from '../../apis/CallApiRap'
 import { Spin } from 'antd';
 

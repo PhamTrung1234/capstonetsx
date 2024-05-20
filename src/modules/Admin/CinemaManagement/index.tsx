@@ -6,7 +6,7 @@ import {
   Table,
 } from "antd";
 import { getCinemaMovieApi} from "../../../apis/CallApiAdmin/movie";
-import { Cinema } from "../../../types/movie.type";
+// import { Cinema } from "../../../types/movie.type";
 import { useNavigate } from "react-router-dom";
 export default function CinemaManagement() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -14,7 +14,7 @@ export default function CinemaManagement() {
   
   
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {data,isLoading,error}=useQuery({
+  const {data,isLoading}=useQuery({
     queryKey: ["list-cinema"],
     queryFn: () => getCinemaMovieApi(),
   })
@@ -46,7 +46,7 @@ export default function CinemaManagement() {
     {
       title: "Thao tác",
       key: "action",
-      render: (_: any, record: Cinema) => (
+      render: (_: any) => (
         <Space size="middle">
           
           <Button type="primary"  

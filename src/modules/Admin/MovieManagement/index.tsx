@@ -50,8 +50,8 @@ export default function MovieManagement() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [dataEdit, setDataEdit] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
-  const { data, isLoading, error } = useQuery({
+  console.log(dataEdit)
+  const { data, isLoading } = useQuery({
     queryKey: ["list-movie", { currentPage }],
     queryFn: () => getListMovieApi(currentPage),
   });
@@ -66,7 +66,7 @@ export default function MovieManagement() {
       }
       return addMovieApi(formValues);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       // tắt modal
       setIsOpenModal(false);
       queryClient.refetchQueries({
@@ -75,14 +75,14 @@ export default function MovieManagement() {
       });
       // gọi lại dữ liệu
     },
-    onError: (error) => {},
+    onError: () => {},
   });
   const {mutate: handledeleteMovie}=useMutation({
     mutationFn:(formValues:number)=>{
         return DeleteMovieApi(formValues);
       
     },
-    onSuccess:(data)=>{
+    onSuccess:()=>{
       console.log("xóa thành công");
       queryClient.refetchQueries({
         queryKey: ["list-movie", { currentPage }],
@@ -413,7 +413,7 @@ export default function MovieManagement() {
                       
                       format={"DD/MM/YYYY"}
                       value={field.value ? dayjs(field.value, "DD/MM/YYYY") : null}
-                    onChange={(date, dateString) => field.onChange(dateString)}
+                    onChange={( dateString) => field.onChange(dateString)}
                       
                     />
                   );

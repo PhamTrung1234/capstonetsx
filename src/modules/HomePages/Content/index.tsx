@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux"
-import { RootState } from "../../../store"
+
 import { useAppSelector } from "../../../store/hook"
 
 

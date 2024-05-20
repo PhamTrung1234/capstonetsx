@@ -52,7 +52,7 @@ export default function Signup() {
         content: 'Đăng ký thành công',
       })
     },
-    onError: (error: any) => {
+    onError: () => {
       
     },
   });

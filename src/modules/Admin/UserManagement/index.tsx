@@ -39,7 +39,7 @@ export default function UserManagement() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isOpenModal, setIsOpenModal] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {data,isLoading,error}=useQuery({
+  const {data,isLoading}=useQuery({
     queryKey: ["list-user", { currentPage }],
     queryFn: () => getUserList(currentPage),
   })
@@ -52,7 +52,7 @@ export default function UserManagement() {
       }
       return addUserApi(formValues);
     },
-    onSuccess:(data)=>{
+    onSuccess:()=>{
       
       setIsOpenModal(false);
       queryClient.refetchQueries({
@@ -67,7 +67,7 @@ export default function UserManagement() {
         return DeleteUserApi(formValues);
       
     },
-    onSuccess:(data)=>{
+    onSuccess:()=>{
       console.log("xóa thành công");
       queryClient.refetchQueries({
         queryKey: ["list-user", { currentPage }],
