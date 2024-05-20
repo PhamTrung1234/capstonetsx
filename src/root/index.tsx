@@ -38,7 +38,7 @@ export const rendernavbar = () => {
 export const rendertitle = (trailer: string, href: string) => {
   return (
     <div className="title flex justify-center flex-col  items-center">
-      <Link to={href} className="title__datve  flex items-center mb-1">
+      <Link  to={href} className="title__datve  flex items-center mb-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -53,7 +53,7 @@ export const rendertitle = (trailer: string, href: string) => {
         </svg>
         <span className="ml-2">Đặt Vé</span>
       </Link>
-      <Link to={trailer} className="flex items-center title__datve mt-1">
+      <Link target="_Blank" to={trailer} className="flex items-center title__datve mt-1">
         <i className="fa-solid fa-play"></i>
         <span className="ml-2">Trailer</span>
       </Link>

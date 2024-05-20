@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 
-export default function FooterEnd() {
+import {memo} from "react"
+
+ function FooterEnd() {
+  
   return (
     <div className="py-3 mt-5 footer__end relative">
         <div className="container">
@@ -32,3 +35,5 @@ export default function FooterEnd() {
       </div>
   )
 }
+
+export default memo(FooterEnd);

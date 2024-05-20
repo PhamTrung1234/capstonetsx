@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-
-export default function Footer() {
+import {memo} from "react"
+ function Footer() {
   return (
     <div className="container relative pt-20">
       <div className="row align-items-center" >
@@ -51,3 +51,5 @@ Hãy khám phá và tận hưởng những giây phút giải trí không giới
     </div>
   )
 }
+
+export default memo(Footer)

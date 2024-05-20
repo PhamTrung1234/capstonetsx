@@ -4,6 +4,7 @@ import api from "../../apis/CallApiAdmin/apiUtil";
 import { PAGE_SIZE } from "../../constants";
 import api1 from "../apiUtil";
 
+
 export const getBannerMovieApi = async () => {
   try {
     const response = await api.get<ResponseApi<Banner[]>>(
@@ -40,6 +41,7 @@ export const getUserList = async (currentPage: number) => {
     const response = await api.get<ResponseApi<DataUserPagination>>(
       `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP03&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
     );
+    
     return response.data.content;
   } catch (error: any) {
     throw Error(error);
@@ -99,7 +101,7 @@ export const DeleteMovieApi = async (MaPhim:number) => {
     throw "Lỗi rồi";
   }
 };
-export const getUserLogin = async (user:{taiKhoan:"",matKhau:""}) => {
+export const getUserLogin = async (user:{taiKhoan:string,matKhau:string|number}) => {
   try {
     const response = await api1.post(
       "/QuanLyNguoiDung/DangNhap",user
@@ -108,6 +110,6 @@ export const getUserLogin = async (user:{taiKhoan:"",matKhau:""}) => {
     return response.data.content;
   } 
   catch (error: any) {
-  throw "Lỗi rồi";
+  throw Error(error);
   }
 };

@@ -225,6 +225,20 @@ ul li a{
 .listmovie__img{
   height: 500px;
 }
+.thanhvien__img img:first-of-type{
+  border:  3px solid #888888;
+  border-radius: 50%;
+}
+.thanhvien{
+  background-color: #fdfcf0;
+  border-radius: 10px;
+}
+.color-bg1{
+  color: #7f7f7f;
+}
+.thanhvien h4{
+  border-bottom: 3px solid #888888;
+}
 @media (min-width:1200px) {
   body .container{
       max-width: 1200px !important;
