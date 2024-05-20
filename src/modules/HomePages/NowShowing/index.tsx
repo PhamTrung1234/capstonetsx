@@ -1,6 +1,6 @@
 import { dataListMovie } from "../../../apis/CallApiListMovie";
 
-import { rendertitle,renderheading } from "../../../root";
+import { renderheading, renderMovieinfo } from "../../../root";
 
 import { Spin } from 'antd';
 
@@ -13,42 +13,23 @@ import { CurrentMovie } from "../../../types/types";
 
 export default function NowShowing() {
   const { isLoading, data ,error} = dataListMovie()
-  let found = 0; 
+  
   if (isLoading || error)
     return (
       <Spin/>
     );
-  const rendermovie = () => {
-    return data?.data.content.map((item: CurrentMovie) => {
-      if (item.dangChieu){
-         found ++;
-         if(found<=4){
-          return (
-            
-              <div className="col-md-3" key={item.maPhim}>
-              <div className="movie__item">
-                <img
-                  
-                  width={"100%"}
-                  
-                  src={item.hinhAnh}
-                  alt="..."
-                ></img>
-                {rendertitle(item.trailer,`/phim/${item.maPhim}`)}
-              </div>
-              <p className="movie__text text-lg mt-4 font-medium">{item.tenPhim}</p>
-            </div>
-           
-          );
-         }
-      }
-        
-    });
-  };
+    let found = 0;
+    const rendermovie = () => {
+      return data?.data.content.map((item: CurrentMovie) => {
+        const result = renderMovieinfo(found, item.dangChieu, item.maPhim, item.hinhAnh, item.tenPhim, item.trailer);
+        if (item.dangChieu) found++;
+        return result;
+      }).filter(Boolean);
+    };
 
   return (
     <div className="pt-20 pb-0 relative">
-       {renderheading("đang chiếu","/phim")}
+       {renderheading("đang chiếu","/phim/list")}
       <div className="row">
          {rendermovie()}
       </div>

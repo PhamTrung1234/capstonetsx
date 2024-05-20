@@ -77,3 +77,24 @@ export const renderheading = (heading: string, href: string) => {
     </div>
   );
 };
+
+export const renderMovieinfo=(found:number,sapChieu:boolean,maPhim:number,hinhAnh:string,tenPhim:string,trailer:string)=>{
+  
+    if (sapChieu) {
+      found++;
+      if (found <= 4) {
+        return (
+          <div className="col-md-3" key={maPhim}>
+            <div className="movie__item">
+              <img width={"100%"} src={hinhAnh} alt="..."></img>
+              {rendertitle(trailer, `/phim/${maPhim}`)}
+            </div>
+            <p className="movie__text mt-4 text-lg font-medium">
+              {tenPhim}
+            </p>
+          </div>
+        )
+      }
+    }
+  return null;
+}

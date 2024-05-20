@@ -14,13 +14,14 @@ import DetailMovie from "../modules/ListMovie/DetailMovie";
 import ListMoviePages from "../modules/ListMovie";
 import ListTheater from "../modules/ListTheater";
 import ThanhVien from "../modules/ThanhVien";
+import Ticketbooking from "../modules/ListMovie/DetailMovie/BookingChair";
 
 
 
 export const useRouteElement = () => {
     const element = useRoutes([
       {
-        path: "",
+        path: "/",
         element: <HomeTemplates />,
         children: [
           {
@@ -30,8 +31,10 @@ export const useRouteElement = () => {
           {
             path: "/phim",
             element: <ListMoviePages />,children:[
-                {path:"",element:<ListMovie/>},
-                {path:"/phim/:id",element:<DetailMovie/>}
+                {path:"/phim/list",element:<ListMovie/>},
+                {path:"/phim/:id",element:<DetailMovie/>},
+                {path:"/phim/booking",element:<Ticketbooking/>},
+
             ]
           },
           {path:"/rap",element:<ListTheater/>},
