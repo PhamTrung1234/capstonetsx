@@ -19,6 +19,7 @@ const initialState  = {
     }
   ],
   movieDettail: null,
+  listUser : null
 };
 
 const userSlice = createSlice({
@@ -31,8 +32,11 @@ const userSlice = createSlice({
     },
     setMovieDetail:(state,{payload})=>{
       state.movieDettail = payload;
+    },
+    setListUser:(state,{payload})=>{
+      state.listUser = payload
     }
   },
 });
-export const { setdiscount,setMovieDetail } = userSlice.actions;
+export const { setdiscount,setMovieDetail,setListUser } = userSlice.actions;
 export default userSlice;

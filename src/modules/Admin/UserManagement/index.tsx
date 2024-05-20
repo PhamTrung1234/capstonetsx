@@ -19,6 +19,7 @@ import { PAGE_SIZE } from "../../../constants";
 import { Controller, useForm } from "react-hook-form";
 import { User } from "../../../types/movie.type";
 
+
 export default function UserManagement() {
   
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,6 +43,7 @@ export default function UserManagement() {
     queryKey: ["list-user", { currentPage }],
     queryFn: () => getUserList(currentPage),
   })
+ 
   const queryClient=useQueryClient();
   const {mutate: handleAddUser,isPending}=useMutation({
     mutationFn:(formValues:any)=>{
@@ -51,6 +53,7 @@ export default function UserManagement() {
       return addUserApi(formValues);
     },
     onSuccess:(data)=>{
+      
       setIsOpenModal(false);
       queryClient.refetchQueries({
         queryKey: ["list-user", { currentPage }],
@@ -287,6 +290,7 @@ export default function UserManagement() {
                 )}
               />
             </Col>
+            
             <Col span={24} className="text-end">
               <Button
                 loading={isPending}

@@ -12,6 +12,8 @@ import MovieManagement from "../modules/Admin/MovieManagement";
 import UserManagement from "../modules/Admin/UserManagement";
 import DetailMovie from "../modules/ListMovie/DetailMovie";
 import ListMoviePages from "../modules/ListMovie";
+import ListTheater from "../modules/ListTheater";
+import ThanhVien from "../modules/ThanhVien";
 
 
 
@@ -32,6 +34,8 @@ export const useRouteElement = () => {
                 {path:"/phim/:id",element:<DetailMovie/>}
             ]
           },
+          {path:"/rap",element:<ListTheater/>},
+          {path:"/thanhvien",element:<ThanhVien/>}
         ],
       },
       {

@@ -31,12 +31,13 @@ export default function Signin() {
       }
       navi("/");
     },
-    onError:(error)=>{
+    onError:()=>{
       navi("/auth/signin");
       return alert("Tài Khoản không tồn tại")}
   });
   // const data =useSelector((state:RootState)=>state.endow.currentUser)
  const onSubmit=(formValue: any)=>{
+  console.log(formValue)
     handleLogin(formValue)
  }  
  
