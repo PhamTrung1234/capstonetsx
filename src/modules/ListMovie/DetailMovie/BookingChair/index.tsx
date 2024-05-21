@@ -46,9 +46,9 @@ export default function Ticketbooking() {
     
     <div className="relative chair__item">
        <h1>Movie Seat Selection</h1>
-      <div className="container">
-      
-        <div className="w3ls-reg">
+      <div className="flex justify-center ">
+        
+        <div className="w3ls-reg ">
            <h2>fill the required details below and select your seats</h2>
           <ul className="seat_w3ls pl-0">
             <li className="smallBox greenBox">Selected Seat</li>
@@ -65,15 +65,17 @@ export default function Ticketbooking() {
               <tbody>{renderChairList()}</tbody>
             </table>
             <div className="screen">
-              <h2 className="wthree">Screen this way</h2>
+              <h2 className="wthree text-center">Screen this way</h2>
             </div>
-            <button
+            <div className="flex justify-center ">
+            <button className="rounded-xl"
               // onClick={() => {
               //   this.handleConfirmSelection();
               // }}
             >
               Confirm Selection
             </button>
+            </div>
           </div>
           
           <div
@@ -99,16 +101,11 @@ export default function Ticketbooking() {
             </table>
           </div>
         </div>
+        </div>
+         
       </div>
-      <div className="copy-wthree">
-        <p>
-          © 2018 Movie Seat Selection . All Rights Reserved | Design by
-          <a href="http://w3layouts.com/" target="_blank">
-            W3layouts
-          </a>
-        </p>
-      </div>
-    </div>
+      
+   
   
   )
 }
