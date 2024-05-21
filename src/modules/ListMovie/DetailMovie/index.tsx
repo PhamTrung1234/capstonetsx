@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getDetailMovie,getDetaiTheater } from "../../../apis/CallApiDetaiMovie";
+
 import dayjs from "dayjs";
 
 import {  Spin } from "antd";
 import Showtimes from "./LichChieu";
 import { useAppDispatch } from "../../../store/hook";
+
 import { setMovieDetail } from "../../../store/slice";
 
 export default function DetailMovie() {

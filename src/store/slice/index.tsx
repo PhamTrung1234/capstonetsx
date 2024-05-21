@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import data from "../datacheater.json"
 
 const initialState  = {
   thongTinUuDai: [
@@ -19,7 +19,8 @@ const initialState  = {
     }
   ],
   movieDettail: null,
-  listUser : null
+  listUser : null,
+  listCheater:data
 };
 
 const userSlice = createSlice({

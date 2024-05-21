@@ -31,9 +31,11 @@ export const useRouteElement = () => {
           {
             path: "/phim",
             element: <ListMoviePages />,children:[
-                {path:"/phim/list",element:<ListMovie/>},
+                {path:"/phim",element:<ListMovie/>},
                 {path:"/phim/:id",element:<DetailMovie/>},
-                {path:"/phim/booking",element:<Ticketbooking/>},
+                {path:"/phim/rapchieu/:id1",element:<Ticketbooking/>}
+                
+                
 
             ]
           },

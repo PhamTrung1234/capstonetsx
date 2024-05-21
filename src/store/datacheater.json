@@ -1,0 +1,184 @@
+[ 
+      {
+      "hang": "", 
+      "danhSachGhe": [
+        {"soGhe":"1"},
+        {"soGhe":"2"},
+        {"soGhe":"3"},
+        {"soGhe":"4"},
+        {"soGhe":"5"},
+        {"soGhe":"6"},
+        {"soGhe":"7"},
+        {"soGhe":"8"},
+        {"soGhe":"9"},
+        {"soGhe":"10"},
+        {"soGhe":"11"},
+        {"soGhe":"12"}
+      ] 
+    }
+    ,
+    {
+      "hang": "A", 
+      "danhSachGhe": [
+        {"soGhe":"A1","daDat":false},
+        {"soGhe":"A2","daDat":false},
+        {"soGhe":"A3","daDat":false},
+        {"soGhe":"A4","daDat":false},
+        {"soGhe":"A5","daDat":false},
+        {"soGhe":"A6","daDat":false},
+        {"soGhe":"A7","daDat":false},
+        {"soGhe":"A8","daDat":false},
+        {"soGhe":"A9","daDat":false},
+        {"soGhe":"A10","daDat":false},
+        {"soGhe":"A11","daDat":true},
+        {"soGhe":"A12","daDat":true}
+      ] 
+    },
+    {
+      "hang": "B", 
+      "danhSachGhe": [
+        {"soGhe":"B1","daDat":false},
+        {"soGhe":"B2","daDat":false},
+        {"soGhe":"B3","daDat":false},
+        {"soGhe":"B4","daDat":false},
+        {"soGhe":"B5","daDat":false},
+        {"soGhe":"B6","daDat":false},
+        {"soGhe":"B7","daDat":false},
+        {"soGhe":"B8","daDat":false},
+        {"soGhe":"B9","daDat":false},
+        {"soGhe":"B10","daDat":false},
+        {"soGhe":"B11","daDat":false},
+        {"soGhe":"B12","daDat":false}
+      ] 
+    },
+    {
+      "hang": "C", 
+      "danhSachGhe": [
+        {"soGhe":"C1","daDat":false},
+        {"soGhe":"C2","daDat":false},
+        {"soGhe":"C3","daDat":false},
+        {"soGhe":"C4","daDat":false},
+        {"soGhe":"C5","daDat":false},
+        {"soGhe":"C6","daDat":false},
+        {"soGhe":"C7","daDat":false},
+        {"soGhe":"C8","daDat":false},
+        {"soGhe":"C9","daDat":false},
+        {"soGhe":"C10","daDat":false},
+        {"soGhe":"C11","daDat":false},
+        {"soGhe":"C12","daDat":false}
+      ] 
+    }, {
+      "hang": "D", 
+      "danhSachGhe": [
+        {"soGhe":"D1","daDat":false},
+        {"soGhe":"D2","daDat":false},
+        {"soGhe":"D3","daDat":false},
+        {"soGhe":"D4","daDat":false},
+        {"soGhe":"D5","daDat":false},
+        {"soGhe":"D6","daDat":false},
+        {"soGhe":"D7","daDat":false},
+        {"soGhe":"D8","daDat":false},
+        {"soGhe":"D9","daDat":false},
+        {"soGhe":"D10","daDat":false},
+        {"soGhe":"D11","daDat":false},
+        {"soGhe":"D12","daDat":false}
+      ] 
+    },{
+      "hang": "E", 
+      "danhSachGhe": [
+        {"soGhe":"E1","daDat":false},
+        {"soGhe":"E2","daDat":false},
+        {"soGhe":"E3","daDat":false},
+        {"soGhe":"E4","daDat":false},
+        {"soGhe":"E5","daDat":false},
+        {"soGhe":"E6","daDat":false},
+        {"soGhe":"E7","daDat":false},
+        {"soGhe":"E8","daDat":false},
+        {"soGhe":"E9","daDat":false},
+        {"soGhe":"E10","daDat":false},
+        {"soGhe":"E11","daDat":false},
+        {"soGhe":"E12","daDat":false}
+      ] 
+    },{
+      "hang": "F", 
+      "danhSachGhe": [
+        {"soGhe":"F1","daDat":false},
+        {"soGhe":"F2","daDat":false},
+        {"soGhe":"F3","daDat":false},
+        {"soGhe":"F4","daDat":false},
+        {"soGhe":"F5","daDat":false},
+        {"soGhe":"F6","daDat":false},
+        {"soGhe":"F7","daDat":false},
+        {"soGhe":"F8","daDat":false},
+        {"soGhe":"F9","daDat":false},
+        {"soGhe":"F10","daDat":false},
+        {"soGhe":"F11","daDat":false},
+        {"soGhe":"F12","daDat":false}
+      ] 
+    },{
+      "hang": "G", 
+      "danhSachGhe": [
+        {"soGhe":"G1","daDat":false},
+        {"soGhe":"G2","daDat":false},
+        {"soGhe":"G3","daDat":false},
+        {"soGhe":"G4","daDat":false},
+        {"soGhe":"G5","daDat":false},
+        {"soGhe":"G6","daDat":false},
+        {"soGhe":"G7","daDat":false},
+        {"soGhe":"G8","daDat":false},
+        {"soGhe":"G9","daDat":false},
+        {"soGhe":"G10","daDat":false},
+        {"soGhe":"G11","daDat":false},
+        {"soGhe":"G12","daDat":false}
+      ] 
+    },{
+      "hang": "H", 
+      "danhSachGhe": [
+        {"soGhe":"H1","daDat":false},
+        {"soGhe":"H2","daDat":false},
+        {"soGhe":"H3","daDat":false},
+        {"soGhe":"H4","daDat":false},
+        {"soGhe":"H5","daDat":false},
+        {"soGhe":"H6","daDat":false},
+        {"soGhe":"H7","daDat":false},
+        {"soGhe":"H8","daDat":false},
+        {"soGhe":"H9","daDat":false},
+        {"soGhe":"H10","daDat":false},
+        {"soGhe":"H11","daDat":false},
+        {"soGhe":"H12","daDat":false}
+      ] 
+    },{
+      "hang": "I", 
+      "danhSachGhe": [
+        {"soGhe":"I1","daDat":false},
+        {"soGhe":"I2","daDat":false},
+        {"soGhe":"I3","daDat":false},
+        {"soGhe":"I4","daDat":false},
+        {"soGhe":"I5","daDat":false},
+        {"soGhe":"I6","daDat":false},
+        {"soGhe":"I7","daDat":false},
+        {"soGhe":"I8","daDat":false},
+        {"soGhe":"I9","daDat":false},
+        {"soGhe":"I10","daDat":false},
+        {"soGhe":"I11","daDat":false},
+        {"soGhe":"I12","daDat":false}
+      ] 
+    },{
+      "hang": "J", 
+      "danhSachGhe": [
+        {"soGhe":"J1","daDat":false},
+        {"soGhe":"J2","daDat":false},
+        {"soGhe":"J3","daDat":false},
+        {"soGhe":"J4","daDat":false},
+        {"soGhe":"J5","daDat":false},
+        {"soGhe":"J6","daDat":false},
+        {"soGhe":"J7","daDat":false},
+        {"soGhe":"J8","daDat":false},
+        {"soGhe":"J9","daDat":false},
+        {"soGhe":"J10","daDat":false},
+        {"soGhe":"J11","daDat":false},
+        {"soGhe":"J12","daDat":false}
+      ] 
+    }
+  
+  ]
