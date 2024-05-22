@@ -90,10 +90,10 @@ export default function Ticketbooking() {
                   <th>Seats</th>
                 </tr>
                 <tr>
-                  <td> {(confirmclick===true &&  data.length > 0)  ?`${username}`:""}</td>
-                  <td>{(confirmclick===true &&  data.length > 0) ?`${numberOfSeats}`:""}</td>
+                  <td> {(confirmclick &&  data.length > 0)  ?`${username}`:""}</td>
+                  <td>{(confirmclick &&  data.length > 0) ?`${numberOfSeats}`:""}</td>
                   <td>
-                  {(confirmclick===true)  ?renderChairSelect():""}
+                  {(confirmclick)  ?renderChairSelect():""}
                   <textarea   defaultValue={""} ></textarea>
                   </td>
                 </tr>

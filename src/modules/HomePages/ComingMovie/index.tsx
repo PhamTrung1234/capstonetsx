@@ -1,6 +1,6 @@
 import { dataListMovie } from "../../../apis/CallApiListMovie";
 
-import { rendertitle,renderheading, renderMovieinfo } from "../../../root";
+import { renderheading, renderMovieinfo } from "../../../root";
 
 import { Spin } from 'antd';
 
@@ -14,7 +14,7 @@ export default function ComingMovie() {
   let found = 0;
   const rendermovie = ()=>{
      return data?.data.content.map((item: CurrentMovie) => {
-      const result = renderMovieinfo(found, item.dangChieu, item.maPhim, item.hinhAnh, item.tenPhim, item.trailer);
+      const result = renderMovieinfo(found, item.sapChieu, item.maPhim, item.hinhAnh, item.tenPhim, item.trailer);
       if (item.sapChieu) found++;
       return result;
     }).filter(Boolean);

@@ -73,7 +73,7 @@ body #navbar-default ul li .active{
   background-color: rgba(220, 38, 38)  ;
   border-radius: 30px ;
 }
-body #navbar-default ul li:last-of-type a{
+.login{
  
   
   background-image: linear-gradient(
@@ -88,7 +88,7 @@ body #navbar-default ul li:last-of-type a{
  
   transition: 0.5s;
 }
-body #navbar-default ul li:last-of-type a:hover{
+.login{
   background-position: right center;
 }
 .fixed-top { 

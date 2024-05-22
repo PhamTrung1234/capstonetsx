@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../datacheater.json"
+const detailUser = localStorage.getItem("user")
 
 const initialState  = {
   thongTinUuDai: [
@@ -20,7 +21,8 @@ const initialState  = {
   ],
   movieDettail: null,
   listUser : null,
-  listCheater:data
+  listCheater:data,
+  currentUser:detailUser?JSON.parse(detailUser):null
 };
 
 const userSlice = createSlice({
@@ -36,8 +38,11 @@ const userSlice = createSlice({
     },
     setListUser:(state,{payload})=>{
       state.listUser = payload
+    },
+    setCurrentUser:(state,{payload})=>{
+      state.currentUser = payload
     }
   },
 });
-export const { setdiscount,setMovieDetail,setListUser } = userSlice.actions;
+export const { setdiscount,setMovieDetail,setListUser,setCurrentUser } = userSlice.actions;
 export default userSlice;

@@ -1,5 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
 
+import { setCurrentUser } from "../store/slice";
+import { useEffect } from "react";
+
 type NavBar2 = {
   to: string;
   element: string;
@@ -10,15 +13,11 @@ const navbar: NavBar2[] = [
   { to: "/rap", element: "Rạp Chiếu" },
   { to: "/thanhvien", element: "Thành Viên" },
 ];
-const userLoggedIn = localStorage.getItem("user");
+
 
 // If user is logged in, change "Sign in" to "Log out" in the navbar
-if (userLoggedIn) {
-  navbar.push({ to: "/", element: "Log out" });
-  
-} else {
-  navbar.push({ to: "/auth/signin", element: "Sign in" });
-}
+
+
 
 export const rendernavbar = () => {
   return navbar.map((item) => {
@@ -98,3 +97,5 @@ export const renderMovieinfo=(found:number,sapChieu:boolean,maPhim:number,hinhAn
     }
   return null;
 }
+
+

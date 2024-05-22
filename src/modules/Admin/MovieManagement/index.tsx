@@ -16,6 +16,7 @@ import {
   Tag,
   Typography,
   Upload,
+  message
 } from "antd";
 
 import {
@@ -46,7 +47,14 @@ export default function MovieManagement() {
       maPhim: 0,
     },
   });
+  const [messageApi] = message.useMessage();
 
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: 'đăng nhập thành công',
+    });
+  };
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [dataEdit, setDataEdit] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,7 +67,7 @@ export default function MovieManagement() {
   const queryClient = useQueryClient();
   const [isupDate,setIsUpdate]=useState(false);
   const { mutate: handleAddMovie, isPending } = useMutation({
-    mutationFn: (formValues: FormData) => {
+    mutationFn: (formValues: any) => {
       if(isupDate){
         
         return UpdateMovieApi(formValues);
@@ -69,13 +77,15 @@ export default function MovieManagement() {
     onSuccess: () => {
       // tắt modal
       setIsOpenModal(false);
+      success();
+      
       queryClient.refetchQueries({
         queryKey: ["list-movie", { currentPage }],
         type: "active",
       });
       // gọi lại dữ liệu
     },
-    onError: () => {},
+    
   });
   const {mutate: handledeleteMovie}=useMutation({
     mutationFn:(formValues:number)=>{
@@ -221,6 +231,19 @@ export default function MovieManagement() {
 
   const onSubmit = (formValues: any) => {
     const formData = new FormData();
+    // const formdata={
+    //   maPhim:formValues.maPhim,
+    //   tenPhim:formValues.tenPhim,
+    //   trailer:formValues.trailer,
+    //   danhGia:formValues.danhGia,
+    //   moTa:formValues.moTa,
+    //   hinhAnh:formValues.hinhAnh,
+    //   hot:formValues.hot,
+    //   dangChieu:formValues.trangThaiChieu ? "true" : "false",
+    //   sapChieu: formValues.trangThaiChieu ? "false" : "true",
+    //   ngayKhoiChieu:formValues.ngayKhoiChieu,
+    //   maNhom: "GP03"
+    // }
     formData.append("maPhim", formValues.maPhim);
     formData.append("tenPhim", formValues.tenPhim);
     formData.append("trailer", formValues.trailer);
@@ -232,6 +255,7 @@ export default function MovieManagement() {
     formData.append("sapChieu", formValues.trangThaiChieu ? "false" : "true");
     formData.append("ngayKhoiChieu", formValues.ngayKhoiChieu);
     formData.append("maNhom", "GP03");
+   
     handleAddMovie(formData);
   };
 
@@ -404,7 +428,7 @@ export default function MovieManagement() {
               <Controller
                 name="ngayKhoiChieu"
                 control={control}
-                render={({field}) => {
+                render={() => {
                   return (
                     <DatePicker
                       className="mt-1 w-full"
@@ -412,8 +436,7 @@ export default function MovieManagement() {
                       placeholder="Chọn ngày"
                       
                       format={"DD/MM/YYYY"}
-                      value={field.value ? dayjs(field.value, "DD/MM/YYYY") : null}
-                    onChange={( dateString) => field.onChange(dateString)}
+                   
                       
                     />
                   );
