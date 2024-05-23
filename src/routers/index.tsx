@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import HomeTemplates from "../layouts/HomeTemplate";
 import HomePages from "../modules/HomePages";
 import ListMovie from "../modules/ListMovie/_ListMovie";

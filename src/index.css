@@ -250,4 +250,17 @@ ul li a{
     color: #b00020;
     font-size: 2rem;
   }
+  .row{
+     gap: 30px 0;
+  }
+  .movie__item img{
+    height: 350px;
+  }
+}
+
+@media (max-width:768px) {
+  .movie__item.col-12{
+    width: 70%;
+    margin: auto;
+  }
 }

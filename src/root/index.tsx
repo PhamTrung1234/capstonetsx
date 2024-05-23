@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 
-import { setCurrentUser } from "../store/slice";
-import { useEffect } from "react";
+
 
 type NavBar2 = {
   to: string;
@@ -83,8 +82,8 @@ export const renderMovieinfo=(found:number,sapChieu:boolean,maPhim:number,hinhAn
       found++;
       if (found <= 4) {
         return (
-          <div className="col-md-3" key={maPhim}>
-            <div className="movie__item">
+          <div className="col-12 col-md-6 col-xl-3 movie__item" key={maPhim}>
+            <div className="">
               <img width={"100%"} src={hinhAnh} alt="..."></img>
               {rendertitle(trailer, `/phim/${maPhim}`)}
             </div>
