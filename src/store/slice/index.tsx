@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../datacheater.json"
+import { DanhSachGhe } from "../../types/movie.type";
 
 const initialState  = {
   thongTinUuDai: [
@@ -20,7 +21,9 @@ const initialState  = {
   ],
   movieDettail: null,
   listUser : null,
-  listCheater:data
+  listCheater:data,
+  listChairSelect: [""],
+  
 };
 
 const userSlice = createSlice({
@@ -36,8 +39,43 @@ const userSlice = createSlice({
     },
     setListUser:(state,{payload})=>{
       state.listUser = payload
-    }
+    },
+    selectChair:(state,{payload})=>{
+      state.listChairSelect=[...state.listChairSelect,payload]
+    },
+    unselectChair:(state,{payload})=>{
+      state.listChairSelect=state.listChairSelect.filter(chair=>chair!=payload)
+    },
+    confimChair:(state)=>{
+      const updatelist=state.listCheater.map(chair=>{
+        if(chair.hang!=""){
+          chair.danhSachGhe.forEach((ghe:DanhSachGhe)=>{
+            if(state.listChairSelect.includes(ghe.soGhe)){
+              ghe.daDat=true;
+            }
+          })
+        } return chair;
+      });
+      state.listCheater=updatelist;
+    },
+   deleteChair:(state,{payload})=>{
+    const upselectList=state.listChairSelect.filter((v)=>v!==payload)
+    const newchairlist=state.listCheater.map((chair)=>{
+      if(chair.hang!=""){
+        chair.danhSachGhe.forEach((ghe:DanhSachGhe)=>{
+          if(ghe.soGhe===payload){
+            ghe.daDat=false;
+          }
+        })
+      } return chair;
+    });
+    state.listCheater=newchairlist;
+    state.listChairSelect=upselectList;
+  },
+  resetState: () => initialState,
   },
 });
-export const { setdiscount,setMovieDetail,setListUser } = userSlice.actions;
+export const { setdiscount,setMovieDetail,setListUser,
+  
+  selectChair,unselectChair,confimChair,deleteChair,resetState } = userSlice.actions;
 export default userSlice;

@@ -16,7 +16,11 @@
     
     
 }
-
+.chair__item #seatsBlock td{
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
 
 
 
@@ -204,8 +208,12 @@ li.smallBox {
     height: 35px;
     
 }
-.chair__item input[type=checkbox]:checked:before {
+input[type=checkbox]:checked:before {
     background-color: Green;
+    font-size: 15px;
+}
+input[type=checkbox]:disabled:before {
+    background-color: red;
     font-size: 15px;
 }
 
