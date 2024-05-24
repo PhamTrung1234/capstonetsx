@@ -25,8 +25,11 @@ export default function Signin() {
       
     },
     onSuccess:(data)=>{
-      
-      localStorage.setItem("user",JSON.stringify(data.accessToken));
+      const newdata= {
+         toKen:data.accessToken,
+         maLoai:data.maLoaiNguoiDung
+      }
+      localStorage.setItem("user",JSON.stringify(newdata));
       dispatch(setCurrentUser(data))
       if(data.maLoaiNguoiDung==="QuanTri"){
         return navi("/admin/user");

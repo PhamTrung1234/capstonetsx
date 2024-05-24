@@ -9,17 +9,19 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Layout, Menu, theme } from "antd";
 import { Link, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../store/hook";
+
 
 const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout() {
 
-  const user:any = useAppSelector(state=>state.endow.currentUser)
-  if(user && user.maLoaiNguoiDung!=="QuanTri"){
-    return <Navigate to={"/"} />
+  const user = localStorage.getItem("user")
+  const newUser = user ? JSON.parse(user) : null
+  
+  if(user && newUser.maLoai==="KhachHang"){
+     return <Navigate to={"/"}/>
   }else if(!user){
-     return <Navigate to={"/auth/signin"}/>
+    return <Navigate to={"/auth/signin"}/>
   }
 
   const [collapsed, setCollapsed] = useState(false);
