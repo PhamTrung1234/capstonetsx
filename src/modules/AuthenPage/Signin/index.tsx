@@ -1,43 +1,47 @@
 import {Typography} from "antd";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup"
-import {yupResolver} from "@hookform/resolvers/yup";
+
+
 import { useMutation } from "@tanstack/react-query";
 import { getUserLogin } from "../../../apis/CallApiAdmin/movie";
-const schema=yup.object({
-  taiKhoan: yup.string().required("Vui long nhap tai khoan"),
-  matKhau: yup.string().required("vui long nhap mat khau")
-})
+import { useAppDispatch } from "../../../store/hook";
+import { setCurrentUser } from "../../../store/slice";
+ 
+
 
 export default function Signin() {
   
   const navi=useNavigate();
   const {register,handleSubmit,formState} =useForm<any>({
-    defaultValues:{taiKhoan:"",matKhau:""},
-    resolver: yupResolver(schema),
-    criteriaMode:"all"
+    defaultValues:{taiKhoan:"",matKhau:""}
+    
+    
   });
-  
+  const dispatch  =useAppDispatch() 
   const {mutate: handleLogin, isPending}=useMutation({
     mutationFn:(formValues:any)=>{
         return getUserLogin(formValues);
       
     },
     onSuccess:(data)=>{
-      localStorage.setItem("user",JSON.stringify(data));
+      
+      localStorage.setItem("user",JSON.stringify(data.accessToken));
+      dispatch(setCurrentUser(data))
       if(data.maLoaiNguoiDung==="QuanTri"){
-        return navi("/admin");
+        return navi("/admin/user");
       }
       navi("/");
+      
     },
     onError:()=>{
       navi("/auth/signin");
+      
       return alert("Tài Khoản không tồn tại")}
   });
-  // const data =useSelector((state:RootState)=>state.endow.currentUser)
+ 
  const onSubmit=(formValue: any)=>{
-  console.log(formValue)
+  
     handleLogin(formValue)
  }  
  

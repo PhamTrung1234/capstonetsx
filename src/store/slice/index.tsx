@@ -22,6 +22,7 @@ const initialState  = {
   movieDettail: null,
   listUser : null,
   listCheater:data,
+  currentUser:null,
   listChairSelect: [""],
   
 };
@@ -73,9 +74,12 @@ const userSlice = createSlice({
     state.listChairSelect=upselectList;
   },
   resetState: () => initialState,
+  setCurrentUser:(state,{payload})=>{
+     state.currentUser = payload
+  }
   },
 });
 export const { setdiscount,setMovieDetail,setListUser,
   
-  selectChair,unselectChair,confimChair,deleteChair,resetState } = userSlice.actions;
+  selectChair,unselectChair,confimChair,deleteChair,resetState,setCurrentUser } = userSlice.actions;
 export default userSlice;

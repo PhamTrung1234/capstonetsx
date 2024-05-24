@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom"
 
-import {memo} from "react"
+import {memo, useEffect} from "react"
 
  function FooterEnd() {
-  
+  useEffect(()=>{
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.backtotop');
+     
+      if (window.scrollY > 0) { 
+          navbar?.classList.remove('backtotop-opacity');
+      } else {
+          navbar?.classList.add('backtotop-opacity');
+      }
+  });
+  },[])
   return (
     <div className="py-3 mt-5 footer__end relative">
         <div className="container">
@@ -31,6 +41,10 @@ import {memo} from "react"
                 </ul>
             </div>
         </div>
+        <a  className="backtotop" href="#">
+        <i className="fa-solid fa-jet-fighter-up"></i>
+        </a>
+
         </div>
       </div>
   )

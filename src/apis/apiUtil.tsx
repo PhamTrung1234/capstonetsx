@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const api1 = axios.create({
+const api = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn/api",
 });
 
-api1.interceptors.request.use((config: any) => {
+api.interceptors.request.use((config: any) => {
   const userLocal = localStorage.getItem("user");
   const currentUSer = userLocal ? JSON.parse(userLocal) : null;
   config.headers = {
     ...config.headers,
-    Authorization: currentUSer ? `Bearer ${currentUSer.accessToken}` : "",
+    Authorization: currentUSer ? `Bearer ${currentUSer}` : "",
     TokenCybersoft:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA2MiIsIkhldEhhblN0cmluZyI6IjE3LzEwLzIwMjQiLCJIZXRIYW5UaW1lIjoiMTcyOTEyMzIwMDAwMCIsIm5iZiI6MTcwMDE1NDAwMCwiZXhwIjoxNzI5MjcwODAwfQ.xKQVYYnO9233wkXRw5oU4Dtx41flqDuUnA0DbkDYRmM",
   };
@@ -19,4 +19,4 @@ api1.interceptors.request.use((config: any) => {
 
 
 
-export default api1;
+export default api;

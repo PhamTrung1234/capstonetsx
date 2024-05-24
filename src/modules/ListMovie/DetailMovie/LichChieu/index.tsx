@@ -15,12 +15,12 @@ export default function Showtimes() {
   
   const theater:any = useAppSelector(state => state.endow.movieDettail)
   
-  
+  console.log(theater)
 
   
   const {data,isPending,error} = dataTheater()
   const listTheater = data?.data.content
-  
+  console.log(listTheater)
   
   const day = dayjs();
   const nextday = day.add(1, "day");
@@ -28,26 +28,43 @@ export default function Showtimes() {
   const renderTheater = () => {
      if(theater){
        const listmovie = theater.content.heThongRapChieu
-       
-       return listmovie.map((item:any)=>{
-        return item?.cumRapChieu.map((element:any)=>{
-          return (
-            <div className="row my-5" key={item.maHeThongRap}>
-                <div className="col-md-3">
-                  <img src={item.logo} alt="..." width={"100px"} />
-                </div>
-                <div className="col-md-9">
-                  <p>{element.diaChi}</p>
-                  {element?.lichChieuPhim.map((lich:any)=>{
-                    return <Link key={lich.maLichChieu} className="text-white border py-2 px-4 mr-3 rounded-md" to={`/phim/rapchieu/${lich.maLichChieu}`}>
-                        {dayjs(lich.ngayChieuGioChieu).format("hh : mm")} 
-                    </Link>
-                  })}
-                </div>
-            </div>
+       if(listmovie.length>0){
+        return listmovie.map((item:any)=>{
+          return item?.cumRapChieu.map((element:any)=>{
+            return (
+              <div className="row my-5" key={item.maHeThongRap}>
+                  <div className="col-md-3">
+                    <img src={item.logo} alt="..." width={"100px"} />
+                  </div>
+                  <div className="col-md-9">
+                    <p>{element.diaChi}</p>
+                    {element?.lichChieuPhim.map((lich:any)=>{
+                      return <Link key={lich.maLichChieu} className="text-white border py-2 px-4 mr-3 rounded-md" to={`/phim/rapchieu/${lich.maLichChieu}`}>
+                          {dayjs(lich.ngayChieuGioChieu).format("hh : mm")} 
+                      </Link>
+                    })}
+                  </div>
+              </div>
+            )
+          })
+         })
+       }else{
+          return(
+            <div className="row my-5" >
+                  <div className="col-md-3">
+                    <img src={listTheater[0].logo} alt="..." width={"100px"} />
+                  </div>
+                  <div className="col-md-9">
+                    <p>{listTheater[0].tenHeThongRap}</p>
+                     <Link  className="text-white border py-2 px-4 mr-3 rounded-md" to={`/phim/rapchieu/${theater.content.maPhim}`}>
+                          {dayjs(theater.dateTime).format("hh : mm")} 
+                      </Link>
+                    
+                  </div>
+              </div>
           )
-        })
-       })
+       }
+       
      }
   };
   

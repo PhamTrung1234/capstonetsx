@@ -1,5 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 
+
+
 type NavBar2 = {
   to: string;
   element: string;
@@ -10,15 +12,11 @@ const navbar: NavBar2[] = [
   { to: "/rap", element: "Rạp Chiếu" },
   { to: "/thanhvien", element: "Thành Viên" },
 ];
-const userLoggedIn = localStorage.getItem("user");
+
 
 // If user is logged in, change "Sign in" to "Log out" in the navbar
-if (userLoggedIn) {
-  navbar.push({ to: "/", element: "Log out" });
-  
-} else {
-  navbar.push({ to: "/auth/signin", element: "Sign in" });
-}
+
+
 
 export const rendernavbar = () => {
   return navbar.map((item) => {
@@ -84,8 +82,8 @@ export const renderMovieinfo=(found:number,sapChieu:boolean,maPhim:number,hinhAn
       found++;
       if (found <= 4) {
         return (
-          <div className="col-md-3" key={maPhim}>
-            <div className="movie__item">
+          <div className="col-12 col-md-6 col-xl-3 movie__item" key={maPhim}>
+            <div className="">
               <img width={"100%"} src={hinhAnh} alt="..."></img>
               {rendertitle(trailer, `/phim/${maPhim}`)}
             </div>
@@ -98,3 +96,5 @@ export const renderMovieinfo=(found:number,sapChieu:boolean,maPhim:number,hinhAn
     }
   return null;
 }
+
+

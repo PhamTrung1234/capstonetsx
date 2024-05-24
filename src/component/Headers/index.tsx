@@ -1,11 +1,34 @@
 
 
-import {Link} from "react-router-dom"
+import {Link, NavLink} from "react-router-dom"
 import { rendernavbar } from "../../root"
+import { useEffect, useState } from "react"
+import { useAppDispatch } from "../../store/hook"
+import { setCurrentUser } from "../../store/slice"
+
+
+
+
 
 export default function Header() {
-   
+  const user = ()=>{
+    const user =  localStorage.getItem("user")
+    return user
+  }
  
+  const removeUser=(use:any)=>{
+      return localStorage.setItem("user",use)
+  }
+  const [found,setFound] = useState(false)
+  
+  useEffect(()=>{
+    if(user()){
+      setFound(true)
+    }else{
+      setFound(false)
+    }
+  },[user()])
+  const dispatch = useAppDispatch()
 
   return (
    
@@ -27,7 +50,24 @@ export default function Header() {
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 ">
         {rendernavbar()}
-        
+        {!found && (
+          <li >
+          <NavLink
+            to={"auth/signin"}
+            className={"block py-2 px-3 text-white  md:p-0 login"}
+          >
+            Sign in
+          </NavLink>
+        </li>
+        )}
+        {found && (
+            <button onClick={()=>{
+              removeUser("");
+              user();
+              dispatch(setCurrentUser(null));
+              setFound(false);
+             }} className="login block py-2 px-3 text-white text-xl  md:p-0 ">Log in</button>
+        )}
       </ul>
     </div>
   </div>

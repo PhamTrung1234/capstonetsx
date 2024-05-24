@@ -44,36 +44,16 @@ body .logo {
 .header__content .header__item{
   margin: auto;
 }
-.header__item1 input{
-  background: #fff url(../img/search.png) no-repeat 10px center;
-      border: 1px solid #eee;
-      padding: 0 10px;
-      width: 35px;
-      height: 35px;
-      border-radius: 10em;
-      cursor: pointer;
-      transition: 0.5s;
-      outline: none;
-}
-.header__item1 input:focus{
-  width: 200px;
-      padding-left: 32px;
-      color: #000;
-      padding-right: 15px;
-      cursor: auto;
-      background-color: #fff;
-}
-.header__item1 a img{
-  width: 35px;
-  height: 35px;
-}
+
+
+
 
 
 body #navbar-default ul li .active{
   background-color: rgba(220, 38, 38)  ;
   border-radius: 30px ;
 }
-body #navbar-default ul li:last-of-type a{
+.login{
  
   
   background-image: linear-gradient(
@@ -88,7 +68,7 @@ body #navbar-default ul li:last-of-type a{
  
   transition: 0.5s;
 }
-body #navbar-default ul li:last-of-type a:hover{
+.login{
   background-position: right center;
 }
 .fixed-top { 
@@ -214,13 +194,14 @@ ul li a{
   color: rgb(242 107 56);
 }
 .signin{
-  margin: auto ;
+  
   background-image: url("https://p.w3layouts.com/demos_new/template_demo/23-03-2018/movie_seat_selection-demo_Free/759053290/web/images/banner.jpg");
-  height: 100vh;
+  
   background-position: center;
   background-size: cover;
-  display: flex;
-  align-items: center;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .listmovie__img{
   height: 500px;
@@ -239,6 +220,23 @@ ul li a{
 .thanhvien h4{
   border-bottom: 3px solid #888888;
 }
+.backtotop{
+  display: scroll;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.backtotop-opacity{
+  opacity: 0;
+}
 @media (min-width:1200px) {
   body .container{
       max-width: 1200px !important;
@@ -249,5 +247,18 @@ ul li a{
   header .navbar-toggler span{
     color: #b00020;
     font-size: 2rem;
+  }
+  .row{
+     gap: 30px 0;
+  }
+  .movie__item img{
+    height: 350px;
+  }
+}
+
+@media (max-width:768px) {
+  .movie__item.col-12{
+    width: 70%;
+    margin: auto;
   }
 }

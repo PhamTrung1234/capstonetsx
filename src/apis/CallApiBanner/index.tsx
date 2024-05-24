@@ -3,6 +3,7 @@ import { ResponseApi } from "../../types/types";
 import api1 from "../apiUtil";
 
 
+
 export const getBannerMovieApi = async () => {
   try {
     const response = await api1.get<ResponseApi<Banner[]>>(

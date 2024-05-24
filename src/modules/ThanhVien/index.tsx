@@ -1,6 +1,14 @@
+import {  Navigate } from "react-router-dom"
+import { useAppSelector } from "../../store/hook"
 
 
 export default function ThanhVien() {
+  
+  const user:any = useAppSelector(state=>state.endow.currentUser)
+  
+  if(!user){
+    return <Navigate to={"/auth/signin"}/>
+  }
   return (
     <div className='container relative text-white thanhvien py-10'>
       <div className='flex justify-between thanhvien__img '>
@@ -8,7 +16,7 @@ export default function ThanhVien() {
         <img src="https://www.barcode-generator.org/zint/api.php?bc_number=20&bc_data=9991987692049193" alt="" />
       </div>
       <div className='py-5'>
-        <p className='font-bold text-lg  text-black'>xin chào nguyễn van a</p>
+        <p className='font-bold text-lg  text-black'>xin chào {user?.hoTen}</p>
         <p className='color-bg1 text-lg'>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
       </div>
       <div >
@@ -89,9 +97,9 @@ export default function ThanhVien() {
       <div className='py-5'>
         <h4 className='text-black pb-3'>Thông tin tài khoản</h4>
         <p className='text-black uppercase text-xl py-2'>Liên hệ</p>
-        <p className='color-bg1'><span>Tên : </span>Nguyễn Văn a</p>
-        <p className='color-bg1'><span>Email : </span>dpnguyen@gmail.com</p>
-        <p className='color-bg1'><span>Số điện thoại : </span>03457893124</p>
+        <p className='color-bg1'><span>Tên : </span>{user?.hoTen}</p>
+        <p className='color-bg1'><span>Email : </span>{user?.email}</p>
+        <p className='color-bg1'><span>Số điện thoại : </span>{user.soDT}</p>
       </div>
     </div>
   )

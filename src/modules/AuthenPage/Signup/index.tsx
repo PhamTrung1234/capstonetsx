@@ -1,5 +1,5 @@
 import { Spin, Typography } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -8,7 +8,7 @@ import {
   getListUserAll,
   postListUser,
 } from "../../../apis/CallApiListUser";
-import {message} from "antd"
+
 type User = {
   email: string;
   hoTen: string;
@@ -36,7 +36,7 @@ export default function Signup() {
       rematKhau: "",
     },
   });
-  const [messageApi] = message.useMessage();
+  const navigate = useNavigate()
   const { isPending, data, error } = useQuery({
     queryKey: ["listuser"],
     queryFn: getListUserAll,
@@ -47,14 +47,9 @@ export default function Signup() {
       return postListUser(formData)
     },
     onSuccess: () => {
-      messageApi.open({
-        type: 'success',
-        content: 'Đăng ký thành công',
-      })
+      navigate("/auth/signin")
     },
-    onError: () => {
-      
-    },
+    
   });
   
   

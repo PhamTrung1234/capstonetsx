@@ -8,11 +8,20 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Layout, Menu, theme } from "antd";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../store/hook";
 
 const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout() {
+
+  const user:any = useAppSelector(state=>state.endow.currentUser)
+  if(user && user.maLoaiNguoiDung!=="QuanTri"){
+    return <Navigate to={"/"} />
+  }else if(!user){
+     return <Navigate to={"/auth/signin"}/>
+  }
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -36,8 +45,11 @@ export default function AdminLayout() {
     <Layout className="h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <Link to={"/admin"}>
-          <div className="h-[72px] my-1 text-white flex items-center justify-center">
-            <img src="/vite.svg" width={55} className="cursor-pointer" />
+          <div className="h-[72px] my-1 text-white flex items-center justify-center logo ">
+          <span className="mt-2 ">tieusau</span>
+          <span>
+            <i className="fa-solid fa-film ml-2" />
+          </span>
           </div>
         </Link>
         <Menu

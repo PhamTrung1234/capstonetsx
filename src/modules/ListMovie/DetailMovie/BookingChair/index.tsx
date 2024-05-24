@@ -1,11 +1,18 @@
-import { useParams } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../store/hook";
 import React, { useState } from "react";
 import "../CSS/main.css"
 import ChairItems from "./ChairItem";
 import { confimChair,deleteChair, resetState } from "../../../../store/slice";
 import { Button } from "antd";
+import currency from "currency.js"
+
 export default function Ticketbooking() {
+  const navigate = useNavigate()
+  const user = localStorage.getItem("user")
+  if(!user){
+    return navigate("/auth/signin")
+  }
   const {listCheater,listChairSelect} = useAppSelector(state=>state.endow)
   
   const [confirmclick,setConfirmclick] = useState(false)
@@ -13,8 +20,8 @@ export default function Ticketbooking() {
   // const [numberOfSeats,setNumber] = useState(0)
   const [deleteclick,setdeleclick]=useState(false);
   const dispatch=useAppDispatch();
-  const userProfileString = localStorage.getItem('user');
-  const userEmail = userProfileString !== null ? JSON.parse(userProfileString).email : '';
+  const userProfileString:any = useAppSelector(state=>state.endow.currentUser);
+  const userEmail = userProfileString  ? userProfileString.email : '';
   
   const handleConfirmSelection=()=>{
     dispatch(confimChair());
@@ -60,6 +67,8 @@ export default function Ticketbooking() {
     });
     return buttons;
   };
+  const total = renderChairSelect()? renderChairSelect().length : 0;
+  
   return (
    
     
@@ -119,6 +128,9 @@ export default function Ticketbooking() {
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div className="my-5">
+            <span className="text-white bg-red-600 text-lg py-3 px-5 uppercase">Tổng tiền: {currency((total*75000),{symbol:""}).format()} vnđ</span>
           </div>
           <Button onClick={()=>{dispatch(resetState()),setConfirmclick(false)}} type="primary" className="mt-2 bg-green-500"  size='large'>
             CHECK-OUT

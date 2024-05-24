@@ -261,7 +261,11 @@ input[type=checkbox]:disabled:before {
         line-height: 1.7;
        
     }
-
+.chair__item #seatsBlock td{
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
 /*--responsive--*/
 
 
