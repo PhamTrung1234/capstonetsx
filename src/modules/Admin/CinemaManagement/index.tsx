@@ -6,14 +6,14 @@ import {
   Table,
 } from "antd";
 import { getCinemaMovieApi} from "../../../apis/CallApiAdmin/movie";
-// import { Cinema } from "../../../types/movie.type";
+
 import { useNavigate } from "react-router-dom";
 export default function CinemaManagement() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 
   
   
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  
   const {data,isLoading}=useQuery({
     queryKey: ["list-cinema"],
     queryFn: () => getCinemaMovieApi(),

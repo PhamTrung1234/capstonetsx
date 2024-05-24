@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "../CSS/main.css"
-import { useAppDispatch, useAppSelector } from '../../../../store/hook';
+import { useAppDispatch } from '../../../../store/hook';
 import { DanhSachGhe, Ticket } from '../../../../types/movie.type';
 import { selectChair, unselectChair } from '../../../../store/slice';
 interface Props{
@@ -31,7 +31,7 @@ export default function ChairItems(props:Props) {
     updateCheckedSeats[soGhe] = !updateCheckedSeats[soGhe];
 
     if (updateCheckedSeats[soGhe]) {
-      console.log(soGhe);
+      
       updateCheckedSeats[soGhe]=true;
       dispatch(selectChair(soGhe));
     } else {
@@ -62,7 +62,7 @@ export default function ChairItems(props:Props) {
                 )}
               </td>
               {index === 4 ? <td className="seatGap"></td> : null}
-              {/* Thêm một thẻ <td> rỗng khi index là 4 */}
+              
             </React.Fragment>
           ))}
         </tr>

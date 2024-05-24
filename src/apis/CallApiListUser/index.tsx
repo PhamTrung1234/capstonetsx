@@ -26,6 +26,6 @@ export const postListUser = async(user:any)=>{
         return response.data.content;
     }
     catch(error:any){
-        return error;
+        throw Error(error)
     }
 }

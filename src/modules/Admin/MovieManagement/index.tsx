@@ -15,8 +15,7 @@ import {
   Table,
   Tag,
   Typography,
-  Upload,
-  message
+  Upload
 } from "antd";
 
 import {
@@ -47,18 +46,11 @@ export default function MovieManagement() {
       maPhim: 0,
     },
   });
-  const [messageApi] = message.useMessage();
-
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'đăng nhập thành công',
-    });
-  };
+  
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [dataEdit, setDataEdit] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(dataEdit)
+  if(dataEdit){}
   const { data, isLoading } = useQuery({
     queryKey: ["list-movie", { currentPage }],
     queryFn: () => getListMovieApi(currentPage),
@@ -75,15 +67,15 @@ export default function MovieManagement() {
       return addMovieApi(formValues);
     },
     onSuccess: () => {
-      // tắt modal
+      
       setIsOpenModal(false);
-      success();
+
       
       queryClient.refetchQueries({
         queryKey: ["list-movie", { currentPage }],
         type: "active",
       });
-      // gọi lại dữ liệu
+      
     },
     
   });
@@ -98,8 +90,8 @@ export default function MovieManagement() {
         queryKey: ["list-movie", { currentPage }],
         type: "active",
       });
-    },
-    onError:(error)=>console.log(error)
+    }
+   
   });
   const columns = [
     {
@@ -220,7 +212,7 @@ export default function MovieManagement() {
 
   const handleDelete = (record: any) => {
     handledeleteMovie(record.maPhim)
-    // console.log("maphim",record.maPhim);
+    
   };
 
   const hinhAnhValue = watch("hinhAnh");
@@ -231,19 +223,6 @@ export default function MovieManagement() {
 
   const onSubmit = (formValues: any) => {
     const formData = new FormData();
-    // const formdata={
-    //   maPhim:formValues.maPhim,
-    //   tenPhim:formValues.tenPhim,
-    //   trailer:formValues.trailer,
-    //   danhGia:formValues.danhGia,
-    //   moTa:formValues.moTa,
-    //   hinhAnh:formValues.hinhAnh,
-    //   hot:formValues.hot,
-    //   dangChieu:formValues.trangThaiChieu ? "true" : "false",
-    //   sapChieu: formValues.trangThaiChieu ? "false" : "true",
-    //   ngayKhoiChieu:formValues.ngayKhoiChieu,
-    //   maNhom: "GP03"
-    // }
     formData.append("maPhim", formValues.maPhim);
     formData.append("tenPhim", formValues.tenPhim);
     formData.append("trailer", formValues.trailer);
@@ -301,8 +280,8 @@ export default function MovieManagement() {
         />
         <div className="flex float-end mt-4 pb-4">
           <Pagination
-            defaultCurrent={currentPage} // khi user thao tác sẽ lấy đươch currentPage
-            total={totalCount} // lấy từ api
+            defaultCurrent={currentPage} 
+            total={totalCount} 
             pageSize={PAGE_SIZE}
             onChange={(page: number) => {
               setCurrentPage(page);

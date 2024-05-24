@@ -15,12 +15,12 @@ export default function Showtimes() {
   
   const theater:any = useAppSelector(state => state.endow.movieDettail)
   
-  console.log(theater)
+  
 
   
   const {data,isPending,error} = dataTheater()
   const listTheater = data?.data.content
-  console.log(listTheater)
+  
   
   const day = dayjs();
   const nextday = day.add(1, "day");

@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../store/hook";
 import React, { useState } from "react";
 import "../CSS/main.css"
@@ -8,16 +8,17 @@ import { Button } from "antd";
 import currency from "currency.js"
 
 export default function Ticketbooking() {
-  const navigate = useNavigate()
+  
   const user = localStorage.getItem("user")
+  
   if(!user){
-    return navigate("/auth/signin")
+    return <Navigate to={"/auth/signin"}/>
   }
   const {listCheater,listChairSelect} = useAppSelector(state=>state.endow)
   
   const [confirmclick,setConfirmclick] = useState(false)
   
-  // const [numberOfSeats,setNumber] = useState(0)
+  
   const [deleteclick,setdeleclick]=useState(false);
   const dispatch=useAppDispatch();
   const userProfileString:any = useAppSelector(state=>state.endow.currentUser);

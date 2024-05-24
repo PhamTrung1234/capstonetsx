@@ -234,6 +234,14 @@ ul li a{
   border-radius: 50%;
   font-size: 20px;
 }
+.carousel-container .slick-slide {
+  overflow: hidden;
+  border-radius: 10px; /* Adjust the radius as needed */
+}
+
+.carousel-container .slick-slide img {
+  border-radius: 10px; /* Adjust the radius as needed */
+}
 .backtotop-opacity{
   opacity: 0;
 }

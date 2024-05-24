@@ -16,8 +16,8 @@ export default function Header() {
     return user
   }
  
-  const removeUser=(use:any)=>{
-      return localStorage.setItem("user",use)
+  const removeUser=()=>{
+      return localStorage.removeItem("user")
   }
   const [found,setFound] = useState(false)
   
@@ -62,11 +62,11 @@ export default function Header() {
         )}
         {found && (
             <button onClick={()=>{
-              removeUser("");
+              removeUser();
               user();
               dispatch(setCurrentUser(null));
               setFound(false);
-             }} className="login block py-2 px-3 text-white text-xl  md:p-0 ">Log in</button>
+             }} className="login block py-2 px-3 text-white text-xl  md:p-0 ">Log out</button>
         )}
       </ul>
     </div>

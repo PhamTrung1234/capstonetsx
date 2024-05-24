@@ -49,7 +49,10 @@ export default function Signup() {
     onSuccess: () => {
       navigate("/auth/signin")
     },
-    
+    onError:()=>{
+      navigate("/auth/signup")
+      return alert("tài khoản hoặc email đã được đăng ký rồi")
+    }
   });
   
   

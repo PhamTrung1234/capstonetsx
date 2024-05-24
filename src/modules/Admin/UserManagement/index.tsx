@@ -22,7 +22,7 @@ import { User } from "../../../types/movie.type";
 
 export default function UserManagement() {
   
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
   const {handleSubmit,control,setValue,reset}=useForm({
     defaultValues: {
       taiKhoan:        "",
@@ -36,9 +36,9 @@ export default function UserManagement() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [isupDate,setIsUpdate]=useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
   const [isOpenModal, setIsOpenModal] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const {data,isLoading}=useQuery({
     queryKey: ["list-user", { currentPage }],
     queryFn: () => getUserList(currentPage),
@@ -60,7 +60,7 @@ export default function UserManagement() {
         type: "active",
       });
     },
-    onError:(error)=>console.log(error)
+   
   });
   const {mutate: handledeleteUser}=useMutation({
     mutationFn:(formValues:string)=>{
@@ -68,13 +68,13 @@ export default function UserManagement() {
       
     },
     onSuccess:()=>{
-      console.log("xóa thành công");
+      
       queryClient.refetchQueries({
         queryKey: ["list-user", { currentPage }],
         type: "active",
       });
     },
-    onError:(error)=>console.log(error)
+    
   });
   
   const columns = [
