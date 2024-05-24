@@ -4,7 +4,7 @@ export default function AuthLayout() {
   
   
   return (
-    <div className="w-full h-screen flex items-center signin justify-center bg-[#f5f5f5] ">
+    <div className="  flex items-center signin justify-center py-5 ">
       <div className="bg-white rounded-2xl p-8">
          <div className="flex justify-center">
          <Link  to={"/"} className="logo">

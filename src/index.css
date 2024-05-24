@@ -44,29 +44,9 @@ body .logo {
 .header__content .header__item{
   margin: auto;
 }
-.header__item1 input{
-  background: #fff url(../img/search.png) no-repeat 10px center;
-      border: 1px solid #eee;
-      padding: 0 10px;
-      width: 35px;
-      height: 35px;
-      border-radius: 10em;
-      cursor: pointer;
-      transition: 0.5s;
-      outline: none;
-}
-.header__item1 input:focus{
-  width: 200px;
-      padding-left: 32px;
-      color: #000;
-      padding-right: 15px;
-      cursor: auto;
-      background-color: #fff;
-}
-.header__item1 a img{
-  width: 35px;
-  height: 35px;
-}
+
+
+
 
 
 body #navbar-default ul li .active{
@@ -214,13 +194,14 @@ ul li a{
   color: rgb(242 107 56);
 }
 .signin{
-  margin: auto ;
+  
   background-image: url("https://p.w3layouts.com/demos_new/template_demo/23-03-2018/movie_seat_selection-demo_Free/759053290/web/images/banner.jpg");
-  height: 100vh;
+  
   background-position: center;
   background-size: cover;
-  display: flex;
-  align-items: center;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .listmovie__img{
   height: 500px;

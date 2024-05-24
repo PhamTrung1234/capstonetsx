@@ -1,8 +1,9 @@
 import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
 import { ResponseApi } from "../../types/types";
-import api from "../apiUtil";
+
+
 import { PAGE_SIZE } from "../../constants";
-import api1 from "../apiUtil";
+import api from "../apiUtil";
 
 
 export const getBannerMovieApi = async () => {

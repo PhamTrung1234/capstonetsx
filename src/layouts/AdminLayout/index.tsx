@@ -15,7 +15,7 @@ const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout() {
 
-  const user = useAppSelector(state=>state.endow.currentUser)
+  const user:any = useAppSelector(state=>state.endow.currentUser)
   if(user && user.maLoaiNguoiDung!=="QuanTri"){
     return <Navigate to={"/"} />
   }else if(!user){

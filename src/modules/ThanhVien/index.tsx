@@ -1,10 +1,11 @@
-import { Navigate } from "react-router-dom"
+import {  Navigate } from "react-router-dom"
 import { useAppSelector } from "../../store/hook"
 
 
 export default function ThanhVien() {
-  const user = useAppSelector(state=>state.endow.currentUser)
-  console.log(user)
+  
+  const user:any = useAppSelector(state=>state.endow.currentUser)
+  
   if(!user){
     return <Navigate to={"/auth/signin"}/>
   }

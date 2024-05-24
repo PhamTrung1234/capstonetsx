@@ -3,6 +3,8 @@
 import {Link, NavLink} from "react-router-dom"
 import { rendernavbar } from "../../root"
 import { useEffect, useState } from "react"
+import { useAppDispatch } from "../../store/hook"
+import { setCurrentUser } from "../../store/slice"
 
 
 
@@ -26,7 +28,7 @@ export default function Header() {
       setFound(false)
     }
   },[user()])
-  
+  const dispatch = useAppDispatch()
 
   return (
    
@@ -62,6 +64,7 @@ export default function Header() {
             <button onClick={()=>{
               removeUser("");
               user();
+              dispatch(setCurrentUser(null));
               setFound(false);
              }} className="login block py-2 px-3 text-white text-xl  md:p-0 ">Log in</button>
         )}

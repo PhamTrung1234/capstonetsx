@@ -55,3 +55,12 @@ export interface Cinema {
   biDanh:        string;
   logo:          string;
 }
+export interface Ticket {
+  hang:        string;
+  danhSachGhe: DanhSachGhe[];
+}
+
+export interface DanhSachGhe {
+  soGhe:  string;
+  daDat?: boolean;
+}
