@@ -1,4 +1,4 @@
-import {  Navigate } from "react-router-dom";
+import {  Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../store/hook";
 import React, { useState } from "react";
 import "../CSS/main.css"
@@ -68,8 +68,13 @@ export default function Ticketbooking() {
     });
     return buttons;
   };
+  const navigate = useNavigate()
   const total = renderChairSelect()? renderChairSelect().length : 0;
-  
+  const hendelOnClick = ()=>{
+    dispatch(resetState());
+    setConfirmclick(false);
+    navigate("/")
+  }
   return (
    
     
@@ -133,7 +138,7 @@ export default function Ticketbooking() {
           <div className="my-5">
             <span className="text-white bg-red-600 text-lg py-3 px-5 uppercase">Tổng tiền: {currency((total*75000),{symbol:""}).format()} vnđ</span>
           </div>
-          <Button onClick={()=>{dispatch(resetState()),setConfirmclick(false)}} type="primary" className="mt-2 bg-green-500"  size='large'>
+          <Button onClick={hendelOnClick} type="primary" className="mt-2 bg-green-500"  size='large'>
             CHECK-OUT
           </Button>
         </div>
