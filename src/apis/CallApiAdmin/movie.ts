@@ -1,13 +1,13 @@
 import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
 import { ResponseApi } from "../../types/types";
-import api from "../../apis/CallApiAdmin/apiUtil";
+
 import { PAGE_SIZE } from "../../constants";
 import api1 from "../apiUtil";
 
 
 export const getBannerMovieApi = async () => {
   try {
-    const response = await api.get<ResponseApi<Banner[]>>(
+    const response = await api1.get<ResponseApi<Banner[]>>(
       "/QuanLyPhim/LayDanhSachBanner"
     );
     return response.data.content;
@@ -18,7 +18,7 @@ export const getBannerMovieApi = async () => {
 
 export const addMovieApi = async (payload: FormData) => {
   try {
-    const response = await api.post("/QuanLyPhim/ThemPhimUploadHinh", payload);
+    const response = await api1.post("/QuanLyPhim/ThemPhimUploadHinh", payload);
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
@@ -27,7 +27,7 @@ export const addMovieApi = async (payload: FormData) => {
 
 export const getListMovieApi = async (currentPage: number) => {
   try {
-    const response = await api.get<ResponseApi<DataMovieListPagination>>(
+    const response = await api1.get<ResponseApi<DataMovieListPagination>>(
       `/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP03&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
     );
     return response.data.content;
@@ -38,7 +38,7 @@ export const getListMovieApi = async (currentPage: number) => {
 
 export const getUserList = async (currentPage: number) => {
   try {
-    const response = await api.get<ResponseApi<DataUserPagination>>(
+    const response = await api1.get<ResponseApi<DataUserPagination>>(
       `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP03&soTrang=${currentPage}&soPhanTuTrenTrang=${PAGE_SIZE}`
     );
     
@@ -49,7 +49,7 @@ export const getUserList = async (currentPage: number) => {
 };
 export const addUserApi = async (payload:any) => {
   try {
-    const response = await api.post("/QuanLyNguoiDung/ThemNguoiDung", payload);
+    const response = await api1.post("/QuanLyNguoiDung/ThemNguoiDung", payload);
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
@@ -58,7 +58,7 @@ export const addUserApi = async (payload:any) => {
 
 export const UpdateUserApi = async (payload:any) => {
   try {
-    const response = await api.post("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", payload);
+    const response = await api1.post("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", payload);
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
@@ -66,7 +66,7 @@ export const UpdateUserApi = async (payload:any) => {
 };
 export const DeleteUserApi = async (TaiKhoan:string) => {
   try {
-    const response = await api.delete(`/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${TaiKhoan}`);
+    const response = await api1.delete(`/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${TaiKhoan}`);
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
@@ -75,7 +75,7 @@ export const DeleteUserApi = async (TaiKhoan:string) => {
 
 export const getCinemaMovieApi = async () => {
   try {
-    const response = await api.get<ResponseApi<Cinema[]>>(
+    const response = await api1.get<ResponseApi<Cinema[]>>(
       "/QuanLyRap/LayThongTinHeThongRap"
     );
     return response.data.content;
@@ -86,7 +86,7 @@ export const getCinemaMovieApi = async () => {
 
 export const UpdateMovieApi = async (payload:FormData) => {
   try {
-    const response = await api.post("/QuanLyPhim/CapNhatPhimUpload", payload);
+    const response = await api1.post("/QuanLyPhim/CapNhatPhimUpload", payload);
     return response.data.content;
   } catch (error) {
     throw "Lỗi rồi";
@@ -94,7 +94,7 @@ export const UpdateMovieApi = async (payload:FormData) => {
 };
 export const DeleteMovieApi = async (MaPhim:number) => {
   try {
-    const response = await api.delete(`/QuanLyPhim/XP?MaPhim=${MaPhim}`);
+    const response = await api1.delete(`/QuanLyPhim/XP?MaPhim=${MaPhim}`);
 
     return response.data.content;
   } catch (error) {

@@ -1,4 +1,5 @@
-import api from "../CallApiAdmin/apiUtil"
+
+import api1 from "../apiUtil"
 
 export type DataUSer ={
     taiKhoan: string,
@@ -11,7 +12,7 @@ export type DataUSer ={
 
 export const getListUserAll = async()=>{
     try{
-        return api.get("/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP00")
+        return api1.get("/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP00")
     }catch(error:any){
         throw Error(error)
     }
@@ -19,7 +20,7 @@ export const getListUserAll = async()=>{
 
 export const postListUser = async(user:any)=>{
     try{
-        const response  = await api.post("/QuanLyNguoiDung/DangKy",user)
+        const response  = await api1.post("/QuanLyNguoiDung/DangKy",user)
         return response.data.content;
     }
     catch(error:any){
