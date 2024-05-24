@@ -1,6 +1,6 @@
 import { Banner, Cinema, DataMovieListPagination, DataUserPagination} from "../../types/movie.type"
 import { ResponseApi } from "../../types/types";
-import api from "../../apis/CallApiAdmin/apiUtil";
+import api from "../apiUtil";
 import { PAGE_SIZE } from "../../constants";
 import api1 from "../apiUtil";
 
@@ -103,7 +103,7 @@ export const DeleteMovieApi = async (MaPhim:number) => {
 };
 export const getUserLogin = async (user:{taiKhoan:string,matKhau:string|number}) => {
   try {
-    const response = await api1.post(
+    const response = await api.post(
       "/QuanLyNguoiDung/DangNhap",user
     );
    

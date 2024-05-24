@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const api1 = axios.create({
+const api = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn/api",
 });
 
-api1.interceptors.request.use((config: any) => {
+api.interceptors.request.use((config: any) => {
   const userLocal = localStorage.getItem("user");
   const currentUSer = userLocal ? JSON.parse(userLocal) : null;
   config.headers = {
@@ -19,4 +19,4 @@ api1.interceptors.request.use((config: any) => {
 
 
 
-export default api1;
+export default api;

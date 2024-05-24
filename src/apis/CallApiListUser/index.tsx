@@ -1,4 +1,5 @@
-import api from "../CallApiAdmin/apiUtil"
+import api from "../apiUtil"
+
 
 export type DataUSer ={
     taiKhoan: string,
