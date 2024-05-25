@@ -32,7 +32,7 @@ export default function Header() {
 
   return (
    
- <header className="relative">
+ <header className="relative ">
   <nav className="container">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
     <Link  to={"/"} className="logo">
@@ -48,7 +48,7 @@ export default function Header() {
       </svg>
     </button>
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 ">
+      <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 relative">
         {rendernavbar()}
         {!found && (
           <li >
