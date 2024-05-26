@@ -25,8 +25,8 @@ export default function ChairItems(props:Props) {
   );
   const handleSeatSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const soGhe = event.target.value;
-    if (props.deleteclick) return;
-    if(props.confirmclick) return ;
+    if (props.deleteclick) return ;
+     if(props.confirmclick) return ;
     const updateCheckedSeats = { ...checkedSeats };
     updateCheckedSeats[soGhe] = !updateCheckedSeats[soGhe];
 

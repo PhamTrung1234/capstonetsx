@@ -47,32 +47,31 @@ const userSlice = createSlice({
     unselectChair:(state,{payload})=>{
       state.listChairSelect=state.listChairSelect.filter(chair=>chair!=payload)
     },
-    confimChair:(state)=>{
-      const updatelist=state.listCheater.map(chair=>{
-        if(chair.hang!=""){
-          chair.danhSachGhe.forEach((ghe:DanhSachGhe)=>{
-            if(state.listChairSelect.includes(ghe.soGhe)){
-              ghe.daDat=true;
+    confimChair: (state) => {
+      state.listCheater = state.listCheater.map((chair) => {
+        if (chair.hang !== "") {
+          chair.danhSachGhe.forEach((ghe:DanhSachGhe) => {
+            if (state.listChairSelect.includes(ghe.soGhe)) {
+              ghe.daDat = true;
             }
-          })
-        } return chair;
+          });
+        }
+        return chair;
       });
-      state.listCheater=updatelist;
     },
-   deleteChair:(state,{payload})=>{
-    const upselectList=state.listChairSelect.filter((v)=>v!==payload)
-    const newchairlist=state.listCheater.map((chair)=>{
-      if(chair.hang!=""){
-        chair.danhSachGhe.forEach((ghe:DanhSachGhe)=>{
-          if(ghe.soGhe===payload){
-            ghe.daDat=false;
-          }
-        })
-      } return chair;
-    });
-    state.listCheater=newchairlist;
-    state.listChairSelect=upselectList;
-  },
+    deleteChair: (state, { payload }) => {
+      state.listChairSelect = state.listChairSelect.filter((v) => v !== payload);
+      state.listCheater = state.listCheater.map((chair) => {
+        if (chair.hang !== "") {
+          chair.danhSachGhe.forEach((ghe:DanhSachGhe) => {
+            if (ghe.soGhe === payload) {
+              ghe.daDat = false;
+            }
+          });
+        }
+        return chair;
+      });
+    },
   resetState: () => initialState,
   setCurrentUser:(state,{payload})=>{
      state.currentUser = payload

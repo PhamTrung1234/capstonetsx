@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {  Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../store/hook";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/main.css"
 import ChairItems from "./ChairItem";
 import { confimChair,deleteChair, resetState } from "../../../../store/slice";
@@ -23,7 +24,6 @@ export default function Ticketbooking() {
   const dispatch=useAppDispatch();
   const userProfileString:any = useAppSelector(state=>state.endow.currentUser);
   const userEmail = userProfileString  ? userProfileString.email : '';
-  
   const handleConfirmSelection=()=>{
     dispatch(confimChair());
     setConfirmclick(true);
@@ -43,7 +43,11 @@ export default function Ticketbooking() {
       );
     });
   };
-  
+  const hendelOnClick = ()=>{
+    dispatch(resetState());
+    setConfirmclick(false);
+    
+  }
   
 
   const renderChairSelect = () => {
@@ -55,26 +59,37 @@ export default function Ticketbooking() {
     listCheater.forEach((ghe, index) => {
       ghe.danhSachGhe.forEach((c, subIndex) => {
         if (listChairSelect.includes(c.soGhe)) {
+          const isLastElement = listChairSelect[listChairSelect.length - 1] === c.soGhe;
           buttons.push(
             <React.Fragment key={`${index}-${subIndex}`}>
             <button  className="btn btn-info mr-1 mt-2 ">{c.soGhe}</button>
             <button  className="btn btn-primary mr-1 mt-2 ">75000 VND</button>
-            <button  className="btn btn-danger  mt-2 " onClick={()=>{dispatch(deleteChair(c.soGhe)); setdeleclick(true)}}>Delete</button>
+            <button  className="btn btn-danger  mt-2 "  onClick={() => {
+                dispatch(deleteChair(c.soGhe));
+                // setdeleclick(true);
+                if (isLastElement) {
+                  hendelOnClick()
+                }
+              }}>Delete</button>
             <br></br>
             </React.Fragment>
           );
+          
         }
-      });
+        
+      }
+      
+    );
+    
     });
+   
+    
     return buttons;
   };
-  const navigate = useNavigate()
+ 
+  
   const total = renderChairSelect()? renderChairSelect().length : 0;
-  const hendelOnClick = ()=>{
-    dispatch(resetState());
-    setConfirmclick(false);
-    navigate("/")
-  }
+  
   return (
    
     
