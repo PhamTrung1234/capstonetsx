@@ -29,7 +29,7 @@ export default function NowShowing() {
 
   return (
     <div className="pt-20 pb-0 relative">
-       {renderheading("đang chiếu","/phim/list")}
+       {renderheading("đang chiếu","/phim")}
       <div className="row">
          {rendermovie()}
       </div>
